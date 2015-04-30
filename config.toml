@@ -1,0 +1,16 @@
+# top level paths.
+contentdir   = "content"
+layoutdir    = "layouts"
+publishdir   = "public"
+
+baseurl      = "http:\/\/mudox.github.io"
+title        = "Mudox"
+languageCode = "en-us"
+
+builddrafts  = false
+
+[taxonomies]
+tag          = "tags"
+series       = "series"
+language     = "languages"
+platform     = "platforms"

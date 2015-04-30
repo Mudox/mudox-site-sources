@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Posts on Mudox </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://localhost:1313/post/index.xml/</link>
+    <language>en-us</language>
+    
+    
+    <updated>Wed, 05 Nov 2014 09:26:28 CST</updated>
+    
+    <item>
+      <title>ABOUT THE SITE</title>
+      <link>http://localhost:1313/post/about_the_site/</link>
+      <pubDate>Wed, 05 Nov 2014 09:26:28 CST</pubDate>
+      
+      <guid>http://localhost:1313/post/about_the_site/</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Note To Myself&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_1&#34;&gt;When to use&lt;/h2&gt;
+
+&lt;h3 id=&#34;toc_2&#34;&gt;&amp;lt;code&amp;gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;in-line command line.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;command name&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;package / software / application name offen appears in script code&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;file path&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;toc_3&#34;&gt;&amp;lt;strong&amp;gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;single word or words that should be prominent in a sentence.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;toc_4&#34;&gt;&amp;lt;em&amp;gt;&lt;/h3&gt;
+
+&lt;h2 id=&#34;toc_5&#34;&gt;To-Do List of the Site&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;plural view customization.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;list of content in sidebar for article single view.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;top menu item more fancier.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;tidy up CSS file.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;term list view pagination.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;home page.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;add summary to each article.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;chinese version of the site.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;translation posts.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_6&#34;&gt;Acknowledgements&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_7&#34;&gt;&lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A Fast and Flexible Static Site Generator built with love by spf13 in GoLang.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_8&#34;&gt;&lt;a href=&#34;https://github.com/spf13/hyde.git&#34;&gt;Hyde&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Hyde is a brazen two-column hugo theme based on the Jekyll theme of the same
+name. It pairs a prominent sidebar with uncomplicated content.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_9&#34;&gt;&lt;a href=&#34;http://jquery.com/&#34;&gt;JQuery&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;jQuery is a fast, small, and feature-rich JavaScript library. It makes things
+like HTML document traversal and manipulation, event handling, animation, and
+Ajax much simpler with an easy-to-use API that works across a multitude of
+browsers. With a combination of versatility and extensibility, jQuery has
+changed the way that millions of people write JavaScript.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_10&#34;&gt;&lt;a href=&#34;https://github.com/isagalaev/highlight.js.git&#34;&gt;Highlight.js&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Highlight.js is a syntax highlighter written in JavaScript. It works in the
+browser as well as on the server. It works with pretty much any markup,
+doesn&amp;rsquo;t depend on any framework and has automatic language detection.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_11&#34;&gt;&lt;a href=&#34;http://www.nodejs.org/&#34;&gt;Node.js&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Node.js® is a platform built on Chrome&amp;rsquo;s JavaScript runtime for easily
+building fast, scalable network applications. Node.js uses an event-driven,
+non-blocking I/O model that makes it lightweight and efficient, perfect for
+data-intensive real-time applications that run across distributed devices.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_12&#34;&gt;&lt;a href=&#34;http://bower.io/&#34;&gt;Bower&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A package manager for the web.&lt;/p&gt;
+
+&lt;p&gt;Bower works by fetching and installing packages from all over, taking care of
+hunting, finding, downloading, and saving the stuff you’re looking for. Bower
+keeps track of these packages in a manifest file, bower.json. How you use
+packages is up to you. Bower provides hooks to facilitate using packages in
+your tools and workflows.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_13&#34;&gt;&lt;a href=&#34;http://www.goat1000.com/tagcanvas.php&#34;&gt;TagCanvas&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;TagCanvas is a Javascript class which will draw and animate a HTML5 canvas
+based tag cloud.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_14&#34;&gt;&lt;a href=&#34;https://github.com/VincentGarreau/particles.js&#34;&gt;particles.js&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A lightweight JavaScript library for creating particles.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_15&#34;&gt;&lt;a href=&#34;https://github.com/necolas/normalize.css&#34;&gt;normalize.css&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A collection of HTML element and attribute style-normalizations.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_16&#34;&gt;&lt;a href=&#34;https://github.com/ramswaroop/animatescroll.js&#34;&gt;animatescroll.js&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A Simple jQuery Plugin for Animating Scroll&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_17&#34;&gt;&lt;a href=&#34;https://github.com/daneden/animate.css&#34;&gt;animate.css&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A cross-browser library of CSS animations. As easy to use as an easy thing.
+&lt;a href=&#34;http://daneden.github.io/animate.css&#34;&gt;http://daneden.github.io/animate.css&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_18&#34;&gt;&lt;a href=&#34;https://github.com/hakimel/stroll.js&#34;&gt;stroll.js&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;CSS3 list scroll effects &lt;a href=&#34;http://lab.hakim.se/scroll-effects&#34;&gt;http://lab.hakim.se/scroll-effects&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_19&#34;&gt;&lt;a href=&#34;https://github.com/knsv/mermaid.git&#34;&gt;mermaid.js&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Generation of diagrams and flowcharts from text in a similar manner as
+markdown.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_20&#34;&gt;&lt;a href=&#34;https://github.com/mbostock/d3&#34;&gt;D3.js&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;D3.js is a JavaScript library for manipulating documents based on data. D3
+helps you bring data to life using HTML, SVG and CSS. D3’s emphasis on web
+standards gives you the full capabilities of modern browsers without tying
+yourself to a proprietary framework, combining powerful visualization
+components and a data-driven approach to DOM manipulation.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_21&#34;&gt;&lt;a href=&#34;http://www.vim.org&#34;&gt;gVim&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;the editor.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ABOUT ME</title>
+      <link>http://localhost:1313/post/about_me/</link>
+      <pubDate>Thu, 02 Oct 2014 03:56:39 CST</pubDate>
+      
+      <guid>http://localhost:1313/post/about_me/</guid>
+      <description>&lt;p&gt;Hi, I&amp;rsquo;m Mudox.&lt;/p&gt;
+
+&lt;p&gt;I am also in:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/Mudox&#34;&gt;github.com/Mudox&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://my.oschina.net/mudox&#34;&gt;oschina.net/mudox&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
