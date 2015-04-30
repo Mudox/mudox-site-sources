@@ -7,7 +7,298 @@
     <language>en-us</language>
     
     
-    <updated>Tue, 28 Apr 2015 17:43:56 CST</updated>
+    <updated>Thu, 30 Apr 2015 15:03:56 CST</updated>
+    
+    <item>
+      <title>Swift 官博文章翻译 - 可为空性和 Objective-C</title>
+      <link>http://localhost:1313/post/trans_swift_nullability_and_objective_c/</link>
+      <pubDate>Thu, 30 Apr 2015 15:03:56 CST</pubDate>
+      
+      <guid>http://localhost:1313/post/trans_swift_nullability_and_objective_c/</guid>
+      <description>
+
+&lt;p&gt;原文链接：&lt;a href=&#34;https://developer.apple.com/swift/blog/?id=25&#34;&gt;Nullability and Objective-C&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;译者：Mudox&lt;/p&gt;
+
+&lt;p&gt;Swift 语言的一个很棒的特性就是它能透明的和 Objective-C 代码互操作，不管是系统提供 Objective-C 框架还是那些你自己写的代码都能。然而，在 Swift 中，可为空的值与不可为空的值引用之间使用明显区别的。比如说 &lt;code&gt;NSView&lt;/code&gt; 和 &lt;code&gt;NSView?&lt;/code&gt; 在 Swift 中是两个截然不同的类型，但在 Objective-C 中他们都用 &lt;code&gt;NSView *&lt;/code&gt; 表示。由于 Swift 无法判断 &lt;code&gt;NSView *&lt;/code&gt; 到底是可为空的引用还是不可为空的引用，所以 Swift 把此类型转换为一个隐式拆箱的可为空类型（implicitly unwrapped optional）—— &lt;code&gt;NSView!&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;在此前的 Xcode 版本中，Apple 公司对一些框架做了特殊处理，以让它们在 Swift 被转换为适当的可为空类型。Xcode 6.3 引入了一个新的 Objective-C 特性：可为空性注释（nullability annotation），是的程序也能对自己的代码做出同样的处理。&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_0&#34;&gt;核心关键字: &lt;code&gt;__nullable&lt;/code&gt;，&lt;code&gt;__nonnull&lt;/code&gt;&lt;/h1&gt;
+
+&lt;p&gt;这项新特性的核心就是两个关键字：&lt;code&gt;__nullable&lt;/code&gt;，&lt;code&gt;__nonnull&lt;/code&gt;。正如你所想的那样，所有 &lt;code&gt;__nullable&lt;/code&gt; 指针可以为 &lt;code&gt;NULL&lt;/code&gt; 或者 &lt;code&gt;nil&lt;/code&gt;，而所有 &lt;code&gt;__nonnull&lt;/code&gt; 指针不行。如果你违反了此规则，编译器将会发出警告。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;@interface AAPLList : NSObject &amp;lt;NSCoding, NSCopying&amp;gt;
+// ...
+- (AAPLListItem * __nullable)itemWithName:(NSString * __nonnull)name;
+@property (copy, readonly) NSArray * __nonnull allItems;
+// ...
+@end
+
+// --------------
+
+[self.list itemWithName:nil]; // warning!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在您的 Objective-C 代码中，您几乎可以在任何可以用到 &lt;code&gt;const&lt;/code&gt; 关键字的地方使用 &lt;code&gt;__nullable&lt;/code&gt;，&lt;code&gt;__nonnull&lt;/code&gt;，当然必须是修饰指针类型。Swift 还未常用的场景提供了更加漂亮的注释方式：对于那些简单的对象类型或者块类型的类成员声明，您可以使用 &lt;code&gt;__nullable&lt;/code&gt;，&lt;code&gt;__nonnull&lt;/code&gt; 非下划线版本来就注释他们。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;- (nullable AAPLListItem *)itemWithName:(nonnull NSString *)name;
+- (NSInteger)indexOfItem:(nonnull AAPLListItem *)item;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对于属性，您也可以使用非下划线的版本，这次不是放在属性名前面，而是把他们挪到属性列表中（括号里面）。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;@property (copy, nullable) NSString *name;
+@property (copy, readonly, nonnull) NSArray *allItems;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;非下划线的版本看起来更加舒服，但是您任然需要把他们加到所有需要的头文件中。您可以使用监控区域（audited region）来简化这个过程，并让头文件变得更加干净。&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;监控区域（andited region)&lt;/h1&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;兼容性&lt;/h1&gt;
+
+&lt;h1 id=&#34;toc_3&#34;&gt;回到 Swift&lt;/h1&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>iOS NOTES - Media Frameworks</title>
+      <link>http://localhost:1313/note/ios_notes_media_frameworks/</link>
+      <pubDate>Wed, 29 Apr 2015 23:43:56 CST</pubDate>
+      
+      <guid>http://localhost:1313/note/ios_notes_media_frameworks/</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;iOS Media Frameworks Stack&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;../../../note/media_stack.svg&#34; alt=&#34;iOS media frameworks Stack&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;The Trunk Relation Graph&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;../../../note/media_trunk_graph.svg&#34; alt=&#34;iOS media framework trunk relation graph&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Swift 官博文章翻译 - 通过减少动态调度来拉升程序性能</title>
+      <link>http://localhost:1313/post/translation_swift_dynamic_dispath/</link>
+      <pubDate>Wed, 29 Apr 2015 10:03:56 CST</pubDate>
+      
+      <guid>http://localhost:1313/post/translation_swift_dynamic_dispath/</guid>
+      <description>
+
+&lt;p&gt;原文链接：&lt;a href=&#34;https://developer.apple.com/swift/blog/?id=27&#34;&gt;Increasing Performance by Reducing Dynamic Dispatch &lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;译者：Mudox&lt;/p&gt;
+
+&lt;p&gt;和其他很多语言一样，Swift 运行程序员改写从父类集成来的方法和属性。这意味着程序得在运行时也只用在运行时才能判断所引用的具体的方法或属性，并间接的调用或访问他们。这一技术名为“动态分配 dynamic dispatch”，通过为每次间接调用或访问增加常亮时间的开销来换取语言表达能力的提升。对于性能苛刻的代码，这类开销是不可取的。本文将展示三种通过消除此类动态性来拉升程序性能的方法：&lt;code&gt;final&lt;/code&gt;，&lt;code&gt;private&lt;/code&gt; 以及整模块优化策略。&lt;/p&gt;
+
+&lt;p&gt;请看如下代码:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;class ParticleModel {
+  var point = ( 0.0, 0.0 )
+  var velocity = 100.0
+
+  func updatePoint(newPoint: (Double, Double), newVelocity: Double) {
+    point = newPoint
+    velocity = newVelocity
+  }
+
+  func update(newP: (Double, Double), newV: Double) {
+    updatePoint(newP, newVelocity: newV)
+  }
+}
+
+var p = ParticleModel()
+for i in stride(from: 0.0, through: 360, by: 1.0) {
+  p.update((i * sin(i), i), newV:i*1000)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;编译器将会生成如下动态分派代码：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;调用 &lt;code&gt;update&lt;/code&gt; 于 &lt;code&gt;p&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;调用  &lt;code&gt;updatePoint&lt;/code&gt; 于 &lt;code&gt;p&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;访问 &lt;code&gt;p&lt;/code&gt; 的 &lt;code&gt;point&lt;/code&gt; 元祖属性。&lt;/li&gt;
+&lt;li&gt;访问 &lt;code&gt;p&lt;/code&gt; 的 &lt;code&gt;velocity&lt;/code&gt; 属性。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;这也许并不是你想要的。动态调度在这里之所以必要，是因为 &lt;code&gt;ParticleModel&lt;/code&gt; 的子类可能重写其属性。&lt;/p&gt;
+
+&lt;p&gt;在 Swift 中，动态调度通过从函数表中搜索正确的函数并间接调用他们来实现。这显然比直接调用来的慢。此外，间接调用还会阻碍很多编译器对代码的优化，这又进一步增加了程序运行的开销。在性能关键的代码中，Swift 提供了一些技术来关闭某些不必要的动态调度以拉升程序性能。&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_0&#34;&gt;当你确定某个声明不会被覆盖时，使用 &lt;code&gt;final&lt;/code&gt; 关键字&lt;/h2&gt;
+
+&lt;p&gt;关键字 &lt;code&gt;final&lt;/code&gt; 可以修饰类，方法或者属性的声明，它指示编译器这些声明不会被后续代码覆盖。这样编译器就能放心的在这些对象上关闭动态调度特性（不生成动态调度的代码）。比如下面的类属性 &lt;code&gt;point&lt;/code&gt;，&lt;code&gt;velocity&lt;/code&gt; 和函数 &lt;code&gt;updatePoint()&lt;/code&gt; 将被直接访问和调用。而方法 &lt;code&gt;update()&lt;/code&gt; 仍然需要通过动态调度来间接的被调用，它也因此能被子类们覆盖。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;class ParticleModel {
+  final var point = ( x: 0.0, y: 0.0 )
+  final var velocity = 100.0
+
+  final func updatePoint(newPoint: (Double, Double), newVelocity: Double) {
+    point = newPoint
+    velocity = newVelocity
+  }
+
+  func update(newP: (Double, Double), newV: Double) {
+    updatePoint(newP, newVelocity: newV)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It is possible to mark an entire class as final by attaching the attribute to the class itself. This forbids subclassing the class, implying that all functions and properties of the class are final as well.&lt;/p&gt;
+
+&lt;p&gt;您可以用 &lt;code&gt;final&lt;/code&gt; 修饰整个类的声明，这样做将直接禁止对该类的子类化，因此对其所有属性和方法的访问将都是直接的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;final class ParticleModel {
+  var point = ( x: 0.0, y: 0.0 )
+  var velocity = 100.0
+  // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;toc_1&#34;&gt;为 &lt;code&gt;private&lt;/code&gt; 声明自动推导 &lt;code&gt;final&lt;/code&gt; 语义&lt;/h2&gt;
+
+&lt;p&gt;被 &lt;code&gt;private&lt;/code&gt; 修饰的声明其可见性会限制在声明它的文件里。如果在该文件里，没有发现对该声明的覆盖，编译器就不会为该声明生成动态调度代码，而是直接的访问他们。&lt;/p&gt;
+
+&lt;p&gt;假设在该文件中，没有对类 &lt;code&gt;ParticleModel&lt;/code&gt; 的覆盖，那么编译器就会关闭对其所有 &lt;code&gt;private&lt;/code&gt; 成员的动态调度，取而代之以更加快速的直接访问。
+Assuming there is no class overriding ParticleModel in the current file, the compiler can replace all dynamically dispatched calls to private declarations with direct calls.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;class ParticleModel {
+  private var point = ( x: 0.0, y: 0.0 )
+  private var velocity = 100.0
+
+  private func updatePoint(newPoint: (Double, Double), newVelocity: Double) {
+    point = newPoint
+    velocity = newVelocity
+  }
+
+  func update(newP: (Double, Double), newV: Double) {
+    updatePoint(newP, newVelocity: newV)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上述代码中，&lt;code&gt;point&lt;/code&gt;，&lt;code&gt;velocity&lt;/code&gt; 和 &lt;code&gt;updatePoint()&lt;/code&gt; 将被直接访问和调用。由于 &lt;code&gt;update()&lt;/code&gt; 没有被 &lt;code&gt;private&lt;/code&gt; 修饰，它仍然需要被动态调度。&lt;/p&gt;
+
+&lt;p&gt;和 &lt;code&gt;final&lt;/code&gt; 一样，&lt;code&gt;private&lt;/code&gt; 也可以被用来直接修饰整个类声明，这相当于在该类的所有成员声明面前加了 &lt;code&gt;private&lt;/code&gt; 关键字。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;private class ParticleModel {
+  var point = ( x: 0.0, y: 0.0 )
+  var velocity = 100.0
+  // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;通过模块级的优化来对 &lt;code&gt;internal&lt;/code&gt; 声明推导出 &lt;code&gt;final&lt;/code&gt; 语义&lt;/h1&gt;
+
+&lt;p&gt;在 Swift 中，所有声明的可见性默认为 &lt;code&gt;internal&lt;/code&gt;，也就是说他们只能在定义他们的模块内可见。编译器通常会单独的编译模块内的每个文件，因此它在变异某一个源文件时，无法判断在同意模块内的其他源文件里是否对该源文件内定义的 &lt;code&gt;internal&lt;/code&gt; 声明的覆盖。但是如果我们启用了编译器的 &lt;code&gt;Whole Module Optimization&lt;/code&gt; 模块级优选项，所以的文件将在一次编译过程中全部被编译。这样编译器就能在整个模块范围类分析是否某个 &lt;code&gt;internal&lt;/code&gt; 声明被覆盖了，从而推导出 &lt;code&gt;final&lt;/code&gt; 语义以关闭动态调度特性。&lt;/p&gt;
+
+&lt;p&gt;让我们回到最开始的代码，这回我们额外添加一些 &lt;code&gt;public&lt;/code&gt; 关键到 &lt;code&gt;ParticleModel&lt;/code&gt; 的声明中。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;public class ParticleModel {
+  var point = ( x: 0.0, y: 0.0 )
+  var velocity = 100.0
+
+  func updatePoint(newPoint: (Double, Double), newVelocity: Double) {
+    point = newPoint
+    velocity = newVelocity
+  }
+
+  public func update(newP: (Double, Double), newV: Double) {
+    updatePoint(newP, newVelocity: newV)
+  }
+}
+
+var p = ParticleModel()
+for i in stride(from: 0.0, through: times, by: 1.0) {
+  p.update((i * sin(i), i), newV:i*1000)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当开启了模块级优化选项的编译器处理以上代码时，它能够推导出 &lt;code&gt;point&lt;/code&gt;, &lt;code&gt;velocity&lt;/code&gt; 和 &lt;code&gt;updatePoint()&lt;/code&gt; 方法可以关闭动态调度特性。与此相反，由于 &lt;code&gt;update()&lt;/code&gt; 被 &lt;code&gt;public&lt;/code&gt; 修饰，其可见性延伸到了模块之外，所以编译器无法断定它具有 &lt;code&gt;final&lt;/code&gt; 语义。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Swift 官博文章翻译 - 内存安全：确保值在使用前先初始化</title>
+      <link>http://localhost:1313/post/translation_swift_memory_safety/</link>
+      <pubDate>Tue, 28 Apr 2015 23:03:56 CST</pubDate>
+      
+      <guid>http://localhost:1313/post/translation_swift_memory_safety/</guid>
+      <description>
+
+&lt;p&gt;原文链接：&lt;a href=&#34;https://developer.apple.com/swift/blog/?id=28&#34;&gt;Memory Safety: Ensuring Values are Initialized Before Use&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;译者：Mudox&lt;/p&gt;
+
+&lt;p&gt;我们设计 Swift 这门语言时的一个重要的发力方向就是改进编程模型的内存安全性。内存安全有很多方面，本文将由浅入深，先从一个简单的问题开始：如果确保值在使用前被初始化。&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Swift 的方式&lt;/h1&gt;
+
+&lt;p&gt;如果每当一个变量第一次被访问时，该变量都有一个有效的初始值，那么该变量就被认为是“安全”的。不同的语言采用了不同的方式来提供这种安全性。比如 C 语言，它将责任完全交给程序员——这种方法强大，但是也很有难度。C++ 和 Objective-C 通过施加一些强制性的模式来改善此类情况，还有一些语言则（比较极端的）要求变量在定义时就必须初始化。&lt;/p&gt;
+
+&lt;p&gt;Swift 采用的主要技术是通过其先进的编译器来对代码的数据流进行分析。由编译器在编译时确保变量在使用前正确初始化，这是是一种名为 &lt;a href=&#34;http://en.wikipedia.org/wiki/Definite_assignment_analysis&#34;&gt;明确初始化——Definitive Initialization&lt;/a&gt; 的策略。还有很多语言比如 Java，C# 都采用了类似的策略，而 Swift 则是的该策略的一个扩展版本应用于更大范围的变量上面。&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;本地变量的明确初始化&lt;/h1&gt;
+
+&lt;p&gt;在 Swift 中有很多场景都用到了该策略，其中最简单的场景就是用于本地变量。相较于“隐式的默认值初始化 implicit default initialization”，明确初始化初始化提供了更大的灵活性，因为它运行你写出如下的代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var myInstance : MyClass  // Uninitialized non-nullable class reference
+
+if x &amp;gt; 42 {
+  myInstance = MyClass(intValue: 13)
+} else {
+  myInstance = MyClass(floatValue: 92.3)
+}
+
+// Okay because myInstance is initialized on all paths
+myInstance.printIt()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里编译器能分析出 &lt;code&gt;if&lt;/code&gt; 语言的两个分支里都对变量 &lt;code&gt;myInstance&lt;/code&gt; 做了初始化，因此它确信后面的 &lt;code&gt;printIt()&lt;/code&gt; 方法不会被调用于未初始化的内存上面。&lt;/p&gt;
+
+&lt;p&gt;明确初始化策非常强大，但是它只有在代码可靠并可预测的情况下才能发挥作用。当你的代码的控制流逻辑比较复杂时，它就可能出意外。比如如下代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var myInstance : MyClass
+
+if x &amp;gt; 10 {
+  myInstance = MyClass(intValue: 13)
+}
+// ...
+if x &amp;gt; 42 {
+  myInstance.printIt()
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上述代码运行时，编译器会发出警告：“变量 &lt;code&gt;myInstance&lt;/code&gt; 在使用前未初始化”。这是因为编译器并不能分析出上下两个 if 语句的条件之间的内在逻辑关系。尽管我们能让编译器照顾到此类个别特殊情况，但是它还是不可能覆盖所有的特殊情况（这其实就是所谓的“&lt;a href=&#34;http://en.wikipedia.org/wiki/Halting_problem&#34;&gt;停机问题 halting problem&lt;/a&gt;”），因此我们决定保持编译规则简单可预测。&lt;/p&gt;
+
+&lt;p&gt;Swift 使初始化一个变量变得极其简单。事实上用 Swift 在声明时给出初始化值 &lt;code&gt;var x = 0&lt;/code&gt; 比声明一个未初始化的变量 &lt;code&gt;var x: Int&lt;/code&gt; 所得到的代码更简短。Swift 提倡在任何可能的时候给声明的变量一个明确的初始化值。还有更加强大的方法就是通过调用 &lt;code&gt;init()&lt;/code&gt; 方法来初始化一个变量。想要了解更加详细的信息，请参阅 Swfit Programming Language 的“&lt;a href=&#34;https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html&#34;&gt;初始化 Initialization&lt;/a&gt;” 一章。&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;其他的方式&lt;/h1&gt;
+
+&lt;p&gt;除了明确初始化之外，Swift 在特定情况下也会采用一些其他的策略。您很可能已经在其他语言中碰到过这些策略，因此我们将在本文中简短的介绍下他们。他们都用各自不足之处，所以 Swift 并没有将他们当做主要策略来使用。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;将安全性交给程序员&lt;/strong&gt;：鉴于 C 的普及程度，我们有必要了解下简单的将安全性责任交给程序员这种做法的利与弊。在 C 中使用未经初始化的值会导致&lt;a href=&#34;http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html&#34;&gt;不确定的行为 undefined behavior&lt;/a&gt;，经常表现为程序的运行时异常。C 语言依赖程序永远都不要犯错误。我们设计 Swift 语言的初衷之一就是让它从本质上就是安全的，所以这一策略果断被我们排除于绝大部分情况之外。但是，Swift 还是提供了诸如 &lt;code&gt;UnsafePointer&lt;/code&gt; 这样的 API，以允许你再绝对必要的情况下启用这种策略。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;隐式的默认值初始化&lt;/strong&gt;：可以让编译器隐式的初始化一个值，以确保其安全性。比如，在 Objective-C 中，给实例的成员变量设置一个初始的“零值”，或者像 C++ 那样给类提供默认的初始化器。我们曾深入探索过这一方法，但做种决定不广泛使用它。因为：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;它对与那些没有合理初始化值的类型不起作用，比如 protocol 对象并没有 &lt;code&gt;init()&lt;/code&gt; 方法可以调用，已经在 Swift 非常普遍的不可为空的类引用。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;就算是对于基本类型，比如对于一个 integer 变量，0 常常在上下文中是一个不合理的值。这也是为什么在 Swift 中给变量赋初始化值如此容易的原因之一。此外，这让代码对于后续的维护者更加的清晰明了。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;注意：对于 &lt;code&gt;Optional&lt;/code&gt; 和 &lt;code&gt;ImplicitlyUnwrappedOptional&lt;/code&gt; 这类可以为空的值，把他们默认初始化为空 &lt;code&gt;nil&lt;/code&gt; 是理所当然的。因此在 Swift 中所有飞空值都会被自动初始化为空值。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;强制在定义时初始化&lt;/strong&gt;：强制要求程序在定义变量是给与其初始值，意味着 &lt;code&gt;var x: Int&lt;/code&gt; 将是非法的，因为它没有提供初始值给编译器。尽管该策略通用于函数式编程语言中, 但是我们认为这一要求国语严格而没有必要，也妨碍了程序员对自然模式的表达。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>iOS NOTES - AMAP API DEPICTED</title>
@@ -1278,213 +1569,6 @@ accounted type).&lt;/p&gt;
 &lt;li&gt;&lt;p&gt;prioritizeing&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;canceling&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>iOS NOTES - COCOA THREADING</title>
-      <link>http://localhost:1313/note/ios_notes_cocoa_threading/</link>
-      <pubDate>Wed, 24 Sep 2014 21:19:59 CST</pubDate>
-      
-      <guid>http://localhost:1313/note/ios_notes_cocoa_threading/</guid>
-      <description>
-
-&lt;h1 id=&#34;toc_0&#34;&gt;Run Loop&lt;/h1&gt;
-
-&lt;h2 id=&#34;toc_1&#34;&gt;4 roles participate in the run loop game:&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Run Loop&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;which is represented by &lt;code&gt;NSRun Loop&lt;/code&gt; &amp;amp; &lt;code&gt;CFRunLoop&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Run Loop Mode&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;which is represented by &lt;code&gt;CFStringRef&lt;/code&gt; associated to each instance of run
-loop object.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Run Loop Source&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;which is represented by &lt;code&gt;CFRunloopSource&lt;/code&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Input source&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Port-based source&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Perform selctor on other threads&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Custom source&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Timer&lt;/p&gt;
-
-&lt;p&gt;which is represented by &lt;code&gt;CFRunloopTimerRef&lt;/code&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Explictly defined timer&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Perform selector on current thread with delay&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Perform selector&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Run Loop Observer&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;toc_2&#34;&gt;4 ways to kill a run loop iteration:&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;no sources exists&lt;/p&gt;
-
-&lt;p&gt;since some system routines may install certain input sources to the run
- loop implictly, we should not kill a run loop iteration by clearing &amp;lsquo;&lt;em&gt;all&lt;/em&gt;&amp;lsquo;
- sources we known.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;timeout&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;sourced handled in one-shot mode&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;explicitly stoped by &lt;code&gt;CRunloopStop&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;toc_3&#34;&gt;3 kinds of perform selector sources.&lt;/h2&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;on thread&lt;/th&gt;
-&lt;th&gt;invocation&lt;/th&gt;
-&lt;th&gt;delay&lt;/th&gt;
-&lt;th&gt;blocking call?&lt;/th&gt;
-&lt;th&gt;mode&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;current thread&lt;/td&gt;
-&lt;td&gt;√&lt;/td&gt;
-&lt;td&gt;√&lt;/td&gt;
-&lt;td&gt;always non-blocking&lt;/td&gt;
-&lt;td&gt;√&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;other thread&lt;/td&gt;
-&lt;td&gt;√&lt;/td&gt;
-&lt;td&gt;x&lt;/td&gt;
-&lt;td&gt;√&lt;/td&gt;
-&lt;td&gt;x&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;main thread&lt;/td&gt;
-&lt;td&gt;√&lt;/td&gt;
-&lt;td&gt;x&lt;/td&gt;
-&lt;td&gt;√&lt;/td&gt;
-&lt;td&gt;x&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h1 id=&#34;toc_4&#34;&gt;Alternatives To Threaing&lt;/h1&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Operation Objects&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Grand Central Dispatch (GCD)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Idle-time notifications&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Asynchronous functions&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Timers&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Separate processes&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&#34;toc_5&#34;&gt;Cocoa Support For Threading&lt;/h1&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Cocoa threads&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;POSIX threads&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;del&gt;Mutiprocessing Services&lt;/del&gt; (&lt;em&gt;obsolete&lt;/em&gt;)&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&#34;toc_6&#34;&gt;Inter-Thread Communication&lt;/h1&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Direct messageing&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Global variables, shared memory &amp;amp; objects&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Conditions&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Run loop sources&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Ports &amp;amp; sockets&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;del&gt;Message queues&lt;/del&gt; (&lt;em&gt;obsolete&lt;/em&gt;)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Cocoa distributed objects&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&#34;toc_7&#34;&gt;Synchronization Tools&lt;/h1&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Atomic operation&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;atomic add&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;atomic increment&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;atomic decrement&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;compare-and-swap&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;test-and-set&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;test-and-clear&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Memory barriers&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Volatile variables&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Locks&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Mutex&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;POSIX API provides &lt;code&gt;pthread_lock_t&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Cocoa provides &lt;code&gt;NSLock&lt;/code&gt; &amp;amp;  &lt;code&gt;@synchronized()&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Recursive lock&lt;/p&gt;
-
-&lt;p&gt;which is provided as class &lt;code&gt;NSRecursiveLock&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Read-write lock (&lt;em&gt;pthread only&lt;/em&gt;)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Distributed lock&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Spin lock (&lt;em&gt;not implemented&lt;/em&gt;)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Double-checked lock&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Conditions (aka &lt;em&gt;condition variable&lt;/em&gt;)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Perform selector routines&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

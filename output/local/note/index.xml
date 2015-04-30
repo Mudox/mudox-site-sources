@@ -7,7 +7,27 @@
     <language>en-us</language>
     
     
-    <updated>Tue, 28 Apr 2015 17:43:56 CST</updated>
+    <updated>Wed, 29 Apr 2015 23:43:56 CST</updated>
+    
+    <item>
+      <title>iOS NOTES - Media Frameworks</title>
+      <link>http://localhost:1313/note/ios_notes_media_frameworks/</link>
+      <pubDate>Wed, 29 Apr 2015 23:43:56 CST</pubDate>
+      
+      <guid>http://localhost:1313/note/ios_notes_media_frameworks/</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;iOS Media Frameworks Stack&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;../../../note/media_stack.svg&#34; alt=&#34;iOS media frameworks Stack&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;The Trunk Relation Graph&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;../../../note/media_trunk_graph.svg&#34; alt=&#34;iOS media framework trunk relation graph&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>iOS NOTES - AMAP API DEPICTED</title>
@@ -1808,48 +1828,6 @@ create a good static website.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;print (func arg...) (.method arg...)
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>iOS NOTES - COCOA CONCURRENCY</title>
-      <link>http://localhost:1313/note/ios_notes_cocoa_concurrency/</link>
-      <pubDate>Wed, 24 Sep 2014 22:18:21 CST</pubDate>
-      
-      <guid>http://localhost:1313/note/ios_notes_cocoa_concurrency/</guid>
-      <description>
-
-&lt;h1 id=&#34;toc_0&#34;&gt;Members Of Cocoa Concurrency&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Operation Queue&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;abstract base class &lt;code&gt;NSOperation&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;concrete subclass &lt;code&gt;NSInvocation&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;concrete subclass &lt;code&gt;NSBlockOperation&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Dispatch Queue&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Dispatch Source&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;toc_1&#34;&gt;Operation Queue Features&lt;/h1&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;graph-based dependencies&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;completion block&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;execution status monitoring&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;prioritizeing&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;canceling&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
 </description>
     </item>
     

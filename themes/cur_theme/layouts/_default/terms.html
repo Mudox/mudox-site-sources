@@ -1,0 +1,16 @@
+{{ partial "head.html" . }}
+<body class="theme-base-0b">
+
+{{ partial "sidebar.html" . }}
+
+  <div class="main content container">
+    <h1 id="title">{{ .Title }}</h1>
+    <ul>
+      {{ $data := .Data }}
+      {{ range $key, $value := .Data.Terms.ByCount }}
+      <li><a href="/{{ $data.Plural }}/{{ $value.Name | urlize }}"> {{ $value.Name }} </a> {{ $value.Count }} </li>
+      {{ end }}
+    </ul>
+  </div>
+  
+  {{ partial "footer.html" . }}

@@ -1,0 +1,44 @@
+<div class="sidebar">
+
+  <!--particle-js as background-->
+  <div id="particles-js"> </div>
+
+  <!--top menu & tagcloud & logo-->
+  <div id="sidebar-front-content" class="container">
+
+    <nav id=sidebar-menu>
+      <!--top menu items-->
+      <li class="top-menu-item">
+        <a href="{{ .Site.BaseUrl }}/note/">NOTES</a>
+      </li>
+      <li class="top-menu-item">
+        <a href="{{ .Site.BaseUrl }}/memo/">MEMOS</a>
+      </li>
+      <li class="top-menu-item">
+        <a href="{{ .Site.BaseUrl }}/project/">PROJECTS</a>
+      </li>
+      <li class="top-menu-item">
+        <a href="{{ .Site.BaseUrl }}/post/">POSTS</a>
+      </li>
+    </nav>
+
+    <nav id="cloud-container">
+      <canvas id="cloud-canvas" width="300" height="300" style="width: 100%;">
+        {{ range $plural, $body := .Site.Taxonomies }}
+        <a href="/{{ $plural | urlize }}">{{ $plural }}</a> {{ range $term, $term_body := $body }}
+        <a href="/{{ $plural | urlize }}/{{ $term | urlize }}">{{ $term }}</a> {{ end }} {{ end }}
+      </canvas>
+    </nav>
+
+    <div class="sidebar-about sidebar-sticky">
+      <div id="logo"><a href="/" id="Mudox" class="animated bounceInLeft">{{ .Site.Title }}</a>
+      </div>
+      <p class="lead">
+        My site powered by <a href="http://gohugo.io">Hugo</a> with a theme customized from <a href="https://github.com/spf13/hyde.git">hyde</a>.
+      </p>
+      <p>{{ with .Site.Params.Copyright }}{{.}}{{ else }}&copy; {{.Now.Format "2006"}}. All rights reserved. {{end}}</p>
+    </div>
+
+  </div>
+
+</div>
