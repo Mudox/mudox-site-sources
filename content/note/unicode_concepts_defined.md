@@ -2,7 +2,7 @@
 author    = "Mudox"
 date      = "2015-04-13T18:10:59+08:00"
 draft     = true
-title     = "UNICODE CONCEPTS DEFINED"
+title     = "SOME UNICODE CONCEPTS CLARIFIED"
 
 tags      = ["Unicode"]
 languages = ["ObjC", "Swift"]

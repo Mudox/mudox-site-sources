@@ -38,6 +38,7 @@ Errors that I collected day by day, when developing iOS apps.
 * When presenting a view controller from a content view controller embeded in a
   __navigation view controller__, it is the navigation view controller, rather
   than the embeded content view controller, which is __presenting__ the view
+  controller, while the replaced view controller is called the __source__ view
   controller.
 
 * When customizing table view cells, __DOT NOT__ use `UIButton` to cover the cell for
