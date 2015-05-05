@@ -15,7 +15,9 @@ Handle iOS keyboard poppu & resignment gracefully.
 # UIWindow provide 6 keyboard related notifications
 
 + `UIKeyboard[Will/Did]ShowNotification`
+
 + `UIKeyboard[Will/Did]HideNotification`
+
 + `UIKeyboard[Will/Did]ChangeFrameNotification`
 
 After playing with these notifications above, I found:

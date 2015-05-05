@@ -69,4 +69,4 @@ animal as? Dog  // evaluates to nil
 animal as! Dog  // triggers a runtime error
 ```
 
-你可以简单记忆为：在 Swift 中 `!` 暗示 __可能会失败__，`?` 暗示 __可能为空 nil__。
+您可以简单记忆为：在 Swift 中 `!` 暗示 __可能会失败__，`?` 暗示 __可能为空 nil__。
