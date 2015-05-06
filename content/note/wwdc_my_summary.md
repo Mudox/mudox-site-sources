@@ -13,12 +13,12 @@ There has been hundreds of WWDC session videos on [Apple WWDC](https://developer
 Here records my sorting after watching progressively, mainly about the order and prerequisites of watching part of them.
 <!--more-->
 
-+ About View
++ __About View__
 
     1. ◉ - Introducing Collection View (2012)
     1. ◎ - Advanced Collection Views and Building Custom Layouts (2012)
 
-+ About View Controllers
++ __About View Controllers__
 
     1. ◑ - Custom Transitions Using View Controllers (2013)
     1. ◑ - View Controller Advancements for iOS 8 (2014)
@@ -26,7 +26,7 @@ Here records my sorting after watching progressively, mainly about the order and
     1. ◑ - Bkuilding Interruptible and Responsive Interactions (2014)
     1. ◉ - A Look Inside Presentation Controllers (2014)
 
-+ About Transitions
++ __About Transitions__
 
     1. ◎ - Best Practices for Cocoa Animation (2013)
     1. ◑ - Custom Transitions Using View Controllers (2013)
@@ -34,14 +34,14 @@ Here records my sorting after watching progressively, mainly about the order and
     1. ◎ - Getting Started with UIKit Dynamics (2013)
     1. ◎ - Advanced Techniques with UIKit Dynamics (2013)
 
-+ About Auto-Layout
++ __About Auto-Layout__
 
     1. ◎ - Introduction to Auto Layout for iOS and OS X (2012)
     1. ◎ - Taking Control of Auto Layout in Xcode 5 (2012)
 
-+ About Objective-C
++ __About Objective-C__
 
-+ About Swift
++ __About Swift__
 
     see [Swift Resources Page](https://developer.apple.com/swift/resources/)
 
@@ -54,14 +54,14 @@ Here records my sorting after watching progressively, mainly about the order and
     1. ◎  - Introduction to LLDB and the Swift REPL
     1. ◎  - Advanced Swift Debugging in LLDB
 
-+ About Text & Font
++ __About Text & Font__
 
-+ About The Developing Tools
++ __About The Developing Tools__
 
     1. ◎  - Xcode Core Concepts (2013)
     1. ◎  - Testing in Xcode 6 (2014)
 
-+ Other
++ __Other__
 
     1. ◎  - Protecting Secrets with the Keychain (2013)
     1. ◉  - Keychain and Authentication With Touch ID (2014)
