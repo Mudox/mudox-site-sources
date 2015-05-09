@@ -1,4 +1,3 @@
-
 +++
 date = "2015-05-05T01:06:23+08:00"
 draft = true
@@ -23,7 +22,15 @@ All example below are run asynchronously.
 
 # Use Case #1 - Simple GET Request
 
-## With ASIHTTPRequest
+## 1.1 With ASIHTTPRequest
+
+ASIHTTPRequest provides 3 ways to handle responses:
+
+1. completion handler selector
+
+1. completion handler block
+
+1. delegate
 
 ### Using delegation
 
@@ -88,7 +95,7 @@ Implement delegate methods to handle results (succeed or fail).
 // reqeust failed
 - (void)requestFailed: (ASIHTTPRequest *)request
 {
-    NSLog(@"ERROR: %@", [request.error localizedDescription]);
+  NSLog(@"ERROR: %@", [request.error localizedDescription]);
 }
 
 #pragma mark - ASIProgressDelegate
@@ -131,25 +138,53 @@ will be ignored.
 // setp #2 -
 //   set blocks instead of delegate to handle results
 
-   [request setCompletionBlock:^{
-      // fetching text data thought captured 'request' object
-      NSString *responseString = [request responseString];
+  [request setCompletionBlock:^{
+     // fetching text data thought captured 'request' object
+     NSString *responseString = [request responseString];
 
-      // fetching binary data thought captured 'request' object
-      NSData *responseData = [request responseData];
-   }];
+     // fetching binary data thought captured 'request' object
+     NSData *responseData = [request responseData];
+  }];
 
-   [request setFailedBlock:^{
-      NSError *error = [request error];
-   }];
+  [request setFailedBlock:^{
+     NSError *error = [request error];
+  }];
 
   [request startAsynchronous];
 }
 ```
 
-## With AFNetworking
+## 1.2 With AFNetworking
 
-## With Alamofire
+1. Gain the singleton manager.
+
+2. invode GET method & set everything in just one call.
+
+```objc
+AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+[manager GET:@"http://example.com/resources.json"
+  parameters:nil
+     success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"JSON: %@", responseObject);
+             }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"Error: %@", error);
+             }
+];
+```
+
+## 1.3 With Alamofire
+
+Just one call.
+
+```swift
+Alamofire.request(.GET, "http://httpbin.org/get", parameters: ["foo": "bar"])
+         .response { (request, response, data, error) in
+                     println(request)
+                     println(response)
+                     println(error)
+                   }
+```
 
 # Use Case #2 - Simple POST Request
 
@@ -170,32 +205,58 @@ Same as the 'Simle GET Request' above, excepts:
   calling `setPostBody` method, either in URL query string form or JSON form.
 
 ```objc
+// step #1
 // use Url string to initialize a instance of ASIFormDataRequest
 
   NSString *strURL = @"...";
   // better call this method to ensure string is properly encoded.
   NSURL *strURL = strURL stringByAddingPercentEscapesUsingEncoding: SUTF8StringEncoding];
 
+// step #2
 // set request methods to 'POST'
 
   [self.formRequest setRequestMethod: "POST"];
 
-// add http pack header & body respectively
+// step #3
+// add http request header & body respectively
 
   self.formRequest = [ASIFormDataRequest requestWithURL: strURL];
   [self.formRequest addRequestHeader: "Content-Type" value: "application/x-www-form-urlencoded"];
 
   // body string in URL query string format
-  NSMutableData *body = [@"type=focus-c" dataUsingEncoding: SUTF8StringEncoding];
+  NSMutableData *body = [NSMutableData dataWithData:
+    [@"type=focus-c" dataUsingEncoding: SUTF8StringEncoding]];
 
   // body string in JSON format
-  // NSMutableData *body = [@"p={\"a\": ,\"b\": }" dataUsingEncoding: SUTF8StringEncoding];;
+  // NSMutableData *body = [NSMutableData dataWithData:
+    [@"p={\"a\": ,\"b\": }" dataUsingEncoding: NSUTF8StringEncoding]];
 
-  [self.formRequest setPostBody: NSMutableData*)[body dataUsingEncoding: SUTF8StringEncoding]];
+  [self.formRequest setPostBody: NSMutableData*)[body dataUsingEncoding: NSUTF8StringEncoding]];
+  
+  // ASIFormDataRequese provides a group of methods to help you // quickly
+  // construct the post body.
+  //
+  // setPostFilePath:
+  // ----
+  // setPostValue: forKey:
+  // addPostValue: forKey:
+  // ----
+  // setFile: forKey:
+  // setFile: withFileName: andContentType: forKey:
+  // ----
+  // setData: forKey:
+  // setData: withFileName: andContentType: forKey:
+  // ----
+  // setPostBody:
+  // setPostBodyFilePath:
+  // ----
+  // appendPostData:
+  // appendPostDataFromFile:
 
+// step #4
 // set delegate & emit request ansynchronously
 
-  [self.formRequest setDelegate: elf];
+  [self.formRequest setDelegate: self];
   [self.formRequest startAsynchronous];
 ```
 
