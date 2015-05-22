@@ -13,12 +13,12 @@ There has been hundreds of WWDC session videos on [Apple WWDC](https://developer
 Here records my sorting after watching progressively, mainly about the order and prerequisites of watching part of them.
 <!--more-->
 
-+ __About View__
++ __View__
 
     1. ◉ - Introducing Collection View (2012)
     1. ◎ - Advanced Collection Views and Building Custom Layouts (2012)
 
-+ __About View Controllers__
++ __View Controllers__
 
     1. ◑ - Custom Transitions Using View Controllers (2013)
     1. ◑ - View Controller Advancements for iOS 8 (2014)
@@ -26,7 +26,7 @@ Here records my sorting after watching progressively, mainly about the order and
     1. ◑ - Bkuilding Interruptible and Responsive Interactions (2014)
     1. ◉ - A Look Inside Presentation Controllers (2014)
 
-+ __About Transitions__
++ __Transitions__
 
     1. ◎ - Best Practices for Cocoa Animation (2013)
     1. ◑ - Custom Transitions Using View Controllers (2013)
@@ -34,14 +34,21 @@ Here records my sorting after watching progressively, mainly about the order and
     1. ◎ - Getting Started with UIKit Dynamics (2013)
     1. ◎ - Advanced Techniques with UIKit Dynamics (2013)
 
-+ __About Auto-Layout__
++ __Auto-Layout__
 
-    1. ◎ - Introduction to Auto Layout for iOS and OS X (2012)
+    1. ◉ - Introduction to Auto Layout for iOS and OS X (2012)
+    1. ◎ - Best Practices for Mastering Auto Layout (2012)
+    1. ◎ - Auto Layout by Examples (2012)
+    1. ◎ - The Evolution of View Controllers on iOS (2012)
     1. ◎ - Taking Control of Auto Layout in Xcode 5 (2012)
 
-+ __About Objective-C__
++ __Networking__
 
-+ __About Swift__
+    1. ◑ - Networking Best Practices (2012)
+
++ __Objective-C__
+
++ __Swift__
 
     see [Swift Resources Page](https://developer.apple.com/swift/resources/)
 
@@ -54,9 +61,9 @@ Here records my sorting after watching progressively, mainly about the order and
     1. ◎  - Introduction to LLDB and the Swift REPL
     1. ◎  - Advanced Swift Debugging in LLDB
 
-+ __About Text & Font__
++ __Text & Font__
 
-+ __About The Developing Tools__
++ __The Developing Tools__
 
     1. ◎  - Xcode Core Concepts (2013)
     1. ◎  - Testing in Xcode 6 (2014)

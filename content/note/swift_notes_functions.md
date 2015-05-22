@@ -9,8 +9,8 @@ languages = ["Swift"]
 platforms = ["iOS", "MacOS"]
 +++
 
-Excerpts from the "Functions" section of the official docuemnt "The Swift
-Programming Language"
+Excerpts from the "Functions" section of the official docuemnt [《The Swift
+Programming Language》](http://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/LexicalStructure.html)
 <!--more-->
 
 # Function Parameters

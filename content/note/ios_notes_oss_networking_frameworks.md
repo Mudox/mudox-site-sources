@@ -232,7 +232,7 @@ Same as the 'Simle GET Request' above, excepts:
     [@"p={\"a\": ,\"b\": }" dataUsingEncoding: NSUTF8StringEncoding]];
 
   [self.formRequest setPostBody: NSMutableData*)[body dataUsingEncoding: NSUTF8StringEncoding]];
-  
+
   // ASIFormDataRequese provides a group of methods to help you // quickly
   // construct the post body.
   //

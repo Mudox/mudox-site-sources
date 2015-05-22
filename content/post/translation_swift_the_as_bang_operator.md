@@ -47,7 +47,7 @@ d as Animal             // upcast succeeds
 
 在声明可为空类型时：
 
-+ `!` 后缀声明一个隐式拆箱的可为空类型（implicitly unwrapped optional）
++ `!` 类型后缀声明一个隐式拆箱的可为空类型（implicitly unwrapped optional）
 
 + `?` 类型后缀声明一个普通的可为空类型（optional）
 

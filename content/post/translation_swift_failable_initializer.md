@@ -38,11 +38,11 @@ if let image = NSImage(contentsOfFile: "swift.png") {
 
 ```swift
 extension Int {
-  init?(fromString: String) { 
+  init?(fromString: String) {
     if let i = fromString.toInt() {
       // Initialize
       self = i
-    } else { 
+    } else {
       // return nil, discarding self is implied
       return nil
     }
@@ -63,7 +63,7 @@ enum Color : Int {
 
   // implicitly synthesized
   init?(rawValue: Int) {
-    switch rawValue { 
+    switch rawValue {
       case 0: self = .Red
       case 1: self = .Green
       case 2: self = .Blue
