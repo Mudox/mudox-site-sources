@@ -1,7 +1,7 @@
 +++
 date = "2015-05-01T14:43:56+08:00"
 draft = true
-title = "MY WATCH GUIDE & SUGGESTIONS ABOUT WWDC SESSION VIDEOS"
+title = "MY SUMMARIES OF WWDC SESSION VIDEOS"
 
 tags      = ["Cocoa", "AppDev"]
 languages = ["Swift", "ObjC"]
@@ -10,7 +10,14 @@ platforms = ["MacOS", "iOS"]
 
 There has been hundreds of WWDC session videos on [Apple WWDC](https://developer.apple.com/videos/), which provide first-hand knowledges about iOS development from Apple's engineers' perspective.
 
-Here records my sorting after watching progressively, mainly about the order and prerequisites of watching part of them.
+Here records progressively my summaries after watching, mainly about the order and prerequisites of watching parts of them.
+
+For those who are new to it, I highly recommend the [ASCIIwwdc](http://asciiwwdc.com/) website.
+
+> Searchable full-text transcripts of WWDC sessions
+
+> Find the content you're looking for, without scrubbing through videos
+
 <!--more-->
 
 + __View__

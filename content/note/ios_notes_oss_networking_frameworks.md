@@ -24,27 +24,81 @@ All example below are run asynchronously.
 
 ## 1.1 With ASIHTTPRequest
 
-ASIHTTPRequest provides 3 ways to handle responses:
-
-1. completion handler selector
-
-1. completion handler block
-
-1. delegate
-
-### Using delegation
 
 Create & configure request object and emit request.
 
-1. Define a long-standing reference somewhere, e.g. as a property of you view
-   controller class.
+1. create `ASIHTTPRequest` isntance with an `NSURL`.
 
-1. Initialize the `ASIHTTPRequest` instance with target URL string (make sure
-   it properly encoded).
+1. set progress feedback settings if you want.
 
-1. set progress feedback settings if you want them.
+    `ASIHTTPRequest` provides uploading & downloading progress reporting by
+    default. You can simply assign an `UIProgressView` or `NSProgress` instance
+    object to them respectively.
 
-1. set delegate and emit the request.
+1. choose and set response handling scheme:
+
+    ASIHTTPRequest provides 3 ways to handle responses:
+
+    1. delegation
+
+      ```objc
+      // These are the default delegate methods for request status
+      // You can use different ones by setting didStartSelector / didFinishSelector / didFailSelector
+      - (void)requestStarted:    (ASIHTTPRequest *)request;
+      - (void)request:           (ASIHTTPRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders;
+      - (void)request:           (ASIHTTPRequest *)request willRedirectToURL:(NSURL *)newURL;
+      - (void)requestFinished:   (ASIHTTPRequest *)request;
+      - (void)requestFailed:     (ASIHTTPRequest *)request;
+      - (void)requestRedirected: (ASIHTTPRequest *)request;
+
+      // When a delegate implements this method, it is expected to process all incoming data itself
+      // This means that responseData / responseString / downloadDestinationPath etc are ignored
+      // You can have the request call a different method by setting didReceiveDataSelector
+      - (void)request:(ASIHTTPRequest *)request didReceiveData:(NSData *)data;
+      ```
+
+    1. target + selector pattern
+
+          you are free to implement, in one delegate obect, more than one
+          methods for a given event and name them arbitrarily.
+
+      ```objc
+      @property (assign) SEL didFinishSelector;
+      @property (assign) SEL didFailSelector;
+      ```
+
+    1. block
+
+          you get a succinct codebase, but should be aware of retain-circle
+          issue.
+
+      ```objc
+      - (void)setStartedBlock:                   (ASIBasicBlock) aStartedBlock;
+      - (void)setHeadersReceivedBlock:           (ASIHeadersBlock) aReceivedBlock;
+      - (void)setCompletionBlock:                (ASIBasicBlock) aCompletionBlock;
+      - (void)setFailedBlock:                    (ASIBasicBlock) aFailedBlock;
+      - (void)setBytesReceivedBlock:             (ASIProgressBlock) aBytesReceivedBlock;
+      - (void)setBytesSentBlock:                 (ASIProgressBlock) aBytesSentBlock;
+      - (void)setDownloadSizeIncrementedBlock:   (ASISizeBlock) aDownloadSizeIncrementedBlock;
+      - (void)setUploadSizeIncrementedBlock:     (ASISizeBlock) anUploadSizeIncrementedBlock;
+      - (void)setDataReceivedBlock:              (ASIDataBlock) aReceivedBlock;
+      - (void)setAuthenticationNeededBlock:      (ASIBasicBlock) anAuthenticationBlock;
+      - (void)setProxyAuthenticationNeededBlock: (ASIBasicBlock) aProxyAuthenticationBlock;
+      - (void)setRequestRedirectedBlock:         (ASIBasicBlock) aRedirectBlock;
+      ```
+
+    1. subclassing
+
+          subclass `ASIHTTPRequest`, and overwrite following methods.
+
+      ```objc
+      - (void)requestFinished:(ASIHTTPRequest *)request
+      - (void)requestFailed:(ASIHTTPRequest *)request
+      ```
+
+1. start loading
+
+### Using delegation
 
 ```objc
 - (IBAction)grabSomethingInBackground: (id)sender {
@@ -156,7 +210,10 @@ will be ignored.
 
 ## 1.2 With AFNetworking
 
-1. Gain the singleton manager.
+1. create a manager instance.
+
+    the `AFHTTPRequestOperationManager` class holds settings globally for
+    subsequently created request operation instances.
 
 2. invode GET method & set everything in just one call.
 
@@ -175,7 +232,7 @@ AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager]
 
 ## 1.3 With Alamofire
 
-Just one call.
+Just one call (actually a line of method chaining).
 
 ```swift
 Alamofire.request(.GET, "http://httpbin.org/get", parameters: ["foo": "bar"])

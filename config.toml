@@ -3,7 +3,7 @@ contentdir   = "content"
 layoutdir    = "layouts"
 publishdir   = "public"
 
-baseurl      = "http:\/\/mudox.github.io"
+baseurl      = "http://mudox.github.io"
 title        = "Mudox"
 languageCode = "en-us"
 
