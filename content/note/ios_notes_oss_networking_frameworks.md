@@ -37,18 +37,24 @@ Create & configure request object and emit request.
 
 1. choose and set response handling scheme:
 
-    ASIHTTPRequest provides 3 ways to handle responses:
+    ASIHTTPRequest provides 4 ways to handle responses:
 
     1. delegation
+
+        implement the following methods (usually the first 2 are all you need)
+        in your delegate objects, they will be called in some queue when events
+        arrive.
 
       ```objc
       // These are the default delegate methods for request status
       // You can use different ones by setting didStartSelector / didFinishSelector / didFailSelector
-      - (void)requestStarted:    (ASIHTTPRequest *)request;
-      - (void)request:           (ASIHTTPRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders;
-      - (void)request:           (ASIHTTPRequest *)request willRedirectToURL:(NSURL *)newURL;
       - (void)requestFinished:   (ASIHTTPRequest *)request;
       - (void)requestFailed:     (ASIHTTPRequest *)request;
+
+      - (void)requestStarted:    (ASIHTTPRequest *)request;
+
+      - (void)request:           (ASIHTTPRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders;
+      - (void)request:           (ASIHTTPRequest *)request willRedirectToURL:(NSURL *)newURL;
       - (void)requestRedirected: (ASIHTTPRequest *)request;
 
       // When a delegate implements this method, it is expected to process all incoming data itself
@@ -63,6 +69,7 @@ Create & configure request object and emit request.
           methods for a given event and name them arbitrarily.
 
       ```objc
+      @property (assign) SEL didStartSelector;
       @property (assign) SEL didFinishSelector;
       @property (assign) SEL didFailSelector;
       ```
@@ -72,11 +79,14 @@ Create & configure request object and emit request.
           you get a succinct codebase, but should be aware of retain-circle
           issue.
 
+          usually the first 2 are all you need.
+
       ```objc
-      - (void)setStartedBlock:                   (ASIBasicBlock) aStartedBlock;
-      - (void)setHeadersReceivedBlock:           (ASIHeadersBlock) aReceivedBlock;
       - (void)setCompletionBlock:                (ASIBasicBlock) aCompletionBlock;
       - (void)setFailedBlock:                    (ASIBasicBlock) aFailedBlock;
+
+      - (void)setStartedBlock:                   (ASIBasicBlock) aStartedBlock;
+      - (void)setHeadersReceivedBlock:           (ASIHeadersBlock) aReceivedBlock;
       - (void)setBytesReceivedBlock:             (ASIProgressBlock) aBytesReceivedBlock;
       - (void)setBytesSentBlock:                 (ASIProgressBlock) aBytesSentBlock;
       - (void)setDownloadSizeIncrementedBlock:   (ASISizeBlock) aDownloadSizeIncrementedBlock;
@@ -89,50 +99,43 @@ Create & configure request object and emit request.
 
     1. subclassing
 
-          subclass `ASIHTTPRequest`, and overwrite following methods.
+          subclass `ASIHTTPRequest`, and overwrite following methods, which is
+          very rare occassion.
 
       ```objc
       - (void)requestFinished:(ASIHTTPRequest *)request
       - (void)requestFailed:(ASIHTTPRequest *)request
       ```
 
-1. start loading
+1. start loading by invoking:
 
-### Using delegation
+      ```objc
+      -(void)startSynchronous
+      -(void)startAsynchronous
+      ```
+
+### 1.1.1 Using delegation
 
 ```objc
-- (IBAction)grabSomethingInBackground: (id)sender {
 // step #1
-//   use Url string to initialize a instance of ASIHTTPRequest instance
-
-  NSString *strURL = @"...."
-  // better call this method to ensure string is properly encoded.
-  strURL = [strURL stringByAddingPercentEscapesUsingEncodingSUTF8StringEncoding];
-  // request instance should stand as long as possible to cover the whole fetching process
-  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLtrURL];
+// initialize a instance of ASIHTTPRequest instance
+ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLtrURL];
 
 // step #2 (optional)
-//   get download progress feedback
-
-  request.downloadProgressDelegate = self;
-  request.showAccurateProgress = YES;
-  [ASIHTTPRequest setShouldUpdateNetworkActivityIndicator: YES];
+// get download progress feedback
+request.showAccurateProgress = YES;
+request.downloadProgressDelegate = self;
+[ASIHTTPRequest setShouldUpdateNetworkActivityIndicator: YES];
 
 // step #3
 // set delegate & emit request ansynchronously
-
-  request.delegate = self;
-  [request startAsynchronous];
-}
+request.delegate = self;
+[request startAsynchronous];
 ```
 
 Implement delegate methods to handle results (succeed or fail).
 
 1. implement `requestFinished:` delegate methods to fetch response content.
-
-1. implement `requestFailed:` delegate methods to handle failure.
-
-1. implement `setProgress:` delegate methods to report the download progress.
 
 ```objc
 #pragma mark - ASIHTTPRequestDelegate
@@ -145,13 +148,21 @@ Implement delegate methods to handle results (succeed or fail).
   // fetch response content as NSString
   NSString *str = [request responseString];
 }
+```
 
+1. implement `requestFailed:` delegate methods to handle failure.
+```objc
 // reqeust failed
 - (void)requestFailed: (ASIHTTPRequest *)request
 {
   NSLog(@"ERROR: %@", [request.error localizedDescription]);
 }
+```
 
+1. implement `setProgress:` delegate methods to report the download progress,
+   if you want.
+
+```objc
 #pragma mark - ASIProgressDelegate
 - (void)setProgress: (float)newProgress
 {
@@ -163,10 +174,10 @@ Implement delegate methods to handle results (succeed or fail).
 }
 
 @end
-
 ```
 
-Another alternative is to set selectors for success & fail handling respectively.
+Another alternative mentioned above is the target-selector pattern: setting
+selectors for success & fail handling respectively.
 
 ```objc
   [request setDidFinishSelector:@selector(requestDone:)];
@@ -176,20 +187,16 @@ Another alternative is to set selectors for success & fail handling respectively
 If you set completion selectors like above, your delegate's completion methods
 will be ignored.
 
-### Using blocks
+### 1.1.2 Using blocks
 
 ```objc
-- (IBAction)grabSomethingInBackground: (id)sender
-{
 // step #1
 //   create request instance
-  NSString *strURL = @"...."
-  strURL = [strURL stringByAddingPercentEscapesUsingEncodingSUTF8StringEncoding];
 
   // use keyword __block to make 'request' variable capturable and modifiable by blocks following
-  __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 
-// setp #2 -
+// setp #2
 //   set blocks instead of delegate to handle results
 
   [request setCompletionBlock:^{
@@ -316,6 +323,8 @@ Same as the 'Simle GET Request' above, excepts:
   [self.formRequest setDelegate: self];
   [self.formRequest startAsynchronous];
 ```
+
+# Use Case #3 - Progress Watching
 
 # Framework Office Documentation
 
