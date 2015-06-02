@@ -24,95 +24,76 @@ All example below are run asynchronously.
 
 ## 1.1 With ASIHTTPRequest
 
-
 Create & configure request object and emit request.
 
 1. create `ASIHTTPRequest` isntance with an `NSURL`.
 
-1. set progress feedback settings if you want.
+2. choose and set response handling scheme. `ASIHTTPRequest` provides 4 ways to handle responses:
 
-    `ASIHTTPRequest` provides uploading & downloading progress reporting by
-    default. You can simply assign an `UIProgressView` or `NSProgress` instance
-    object to them respectively.
+    + __delegation__,  implement the following methods (usually the first 2
+       are all you need) in your delegate objects, they will be called in some
+       queue when events arrive.
 
-1. choose and set response handling scheme:
+    ```objc
+    // These are the default delegate methods for request status
+    // You can use different ones by setting didStartSelector / didFinishSelector / didFailSelector
+    - (void)requestFinished:   (ASIHTTPRequest *)request;
+    - (void)requestFailed:     (ASIHTTPRequest *)request;
 
-    ASIHTTPRequest provides 4 ways to handle responses:
+    - (void)requestStarted:    (ASIHTTPRequest *)request;
 
-    1. delegation
+    - (void)request:           (ASIHTTPRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders;
+    - (void)request:           (ASIHTTPRequest *)request willRedirectToURL:(NSURL *)newURL;
+    - (void)requestRedirected: (ASIHTTPRequest *)request;
 
-        implement the following methods (usually the first 2 are all you need)
-        in your delegate objects, they will be called in some queue when events
-        arrive.
+    // When a delegate implements this method, it is expected to process all incoming data itself
+    // This means that responseData / responseString / downloadDestinationPath etc are ignored
+    // You can have the request call a different method by setting didReceiveDataSelector
+    - (void)request:(ASIHTTPRequest *)request didReceiveData:(NSData *)data;
+    ```
 
-      ```objc
-      // These are the default delegate methods for request status
-      // You can use different ones by setting didStartSelector / didFinishSelector / didFailSelector
-      - (void)requestFinished:   (ASIHTTPRequest *)request;
-      - (void)requestFailed:     (ASIHTTPRequest *)request;
+    + __target + selector pattern__, you are free to implement, in one delegate
+       obect, more than one methods for a given event and name them
+       arbitrarily.
 
-      - (void)requestStarted:    (ASIHTTPRequest *)request;
+    ```objc
+    @property (assign) SEL didStartSelector;
+    @property (assign) SEL didFinishSelector;
+    @property (assign) SEL didFailSelector;
+    ```
 
-      - (void)request:           (ASIHTTPRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders;
-      - (void)request:           (ASIHTTPRequest *)request willRedirectToURL:(NSURL *)newURL;
-      - (void)requestRedirected: (ASIHTTPRequest *)request;
+    + __block__,  you get a succinct codebase, but should be aware of
+       retain-circle issue. usually the first 2 are all you need.
 
-      // When a delegate implements this method, it is expected to process all incoming data itself
-      // This means that responseData / responseString / downloadDestinationPath etc are ignored
-      // You can have the request call a different method by setting didReceiveDataSelector
-      - (void)request:(ASIHTTPRequest *)request didReceiveData:(NSData *)data;
-      ```
+    ```objc
+    - (void)setCompletionBlock:                (ASIBasicBlock) aCompletionBlock;
+    - (void)setFailedBlock:                    (ASIBasicBlock) aFailedBlock;
 
-    1. target + selector pattern
+    - (void)setStartedBlock:                   (ASIBasicBlock) aStartedBlock;
+    - (void)setHeadersReceivedBlock:           (ASIHeadersBlock) aReceivedBlock;
+    - (void)setBytesReceivedBlock:             (ASIProgressBlock) aBytesReceivedBlock;
+    - (void)setBytesSentBlock:                 (ASIProgressBlock) aBytesSentBlock;
+    - (void)setDownloadSizeIncrementedBlock:   (ASISizeBlock) aDownloadSizeIncrementedBlock;
+    - (void)setUploadSizeIncrementedBlock:     (ASISizeBlock) anUploadSizeIncrementedBlock;
+    - (void)setDataReceivedBlock:              (ASIDataBlock) aReceivedBlock;
+    - (void)setAuthenticationNeededBlock:      (ASIBasicBlock) anAuthenticationBlock;
+    - (void)setProxyAuthenticationNeededBlock: (ASIBasicBlock) aProxyAuthenticationBlock;
+    - (void)setRequestRedirectedBlock:         (ASIBasicBlock) aRedirectBlock;
+    ```
 
-          you are free to implement, in one delegate obect, more than one
-          methods for a given event and name them arbitrarily.
+    + __subclassing__  subclass `ASIHTTPRequest`, and overwrite following methods, which is very rare occassion.
 
-      ```objc
-      @property (assign) SEL didStartSelector;
-      @property (assign) SEL didFinishSelector;
-      @property (assign) SEL didFailSelector;
-      ```
+    ```objc
+    - (void)requestFinished:(ASIHTTPRequest *)request
+    - (void)requestFailed:(ASIHTTPRequest *)request
+    ```
 
-    1. block
+3. start loading by invoking:
 
-          you get a succinct codebase, but should be aware of retain-circle
-          issue.
-
-          usually the first 2 are all you need.
-
-      ```objc
-      - (void)setCompletionBlock:                (ASIBasicBlock) aCompletionBlock;
-      - (void)setFailedBlock:                    (ASIBasicBlock) aFailedBlock;
-
-      - (void)setStartedBlock:                   (ASIBasicBlock) aStartedBlock;
-      - (void)setHeadersReceivedBlock:           (ASIHeadersBlock) aReceivedBlock;
-      - (void)setBytesReceivedBlock:             (ASIProgressBlock) aBytesReceivedBlock;
-      - (void)setBytesSentBlock:                 (ASIProgressBlock) aBytesSentBlock;
-      - (void)setDownloadSizeIncrementedBlock:   (ASISizeBlock) aDownloadSizeIncrementedBlock;
-      - (void)setUploadSizeIncrementedBlock:     (ASISizeBlock) anUploadSizeIncrementedBlock;
-      - (void)setDataReceivedBlock:              (ASIDataBlock) aReceivedBlock;
-      - (void)setAuthenticationNeededBlock:      (ASIBasicBlock) anAuthenticationBlock;
-      - (void)setProxyAuthenticationNeededBlock: (ASIBasicBlock) aProxyAuthenticationBlock;
-      - (void)setRequestRedirectedBlock:         (ASIBasicBlock) aRedirectBlock;
-      ```
-
-    1. subclassing
-
-          subclass `ASIHTTPRequest`, and overwrite following methods, which is
-          very rare occassion.
-
-      ```objc
-      - (void)requestFinished:(ASIHTTPRequest *)request
-      - (void)requestFailed:(ASIHTTPRequest *)request
-      ```
-
-1. start loading by invoking:
-
-      ```objc
-      -(void)startSynchronous
-      -(void)startAsynchronous
-      ```
+```objc
+-(void)startSynchronous
+-(void)startAsynchronous
+  ```
 
 ### 1.1.1 Using delegation
 
@@ -121,19 +102,19 @@ Create & configure request object and emit request.
 // initialize a instance of ASIHTTPRequest instance
 ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLtrURL];
 
-// step #2 (optional)
-// get download progress feedback
-request.showAccurateProgress = YES;
-request.downloadProgressDelegate = self;
-[ASIHTTPRequest setShouldUpdateNetworkActivityIndicator: YES];
+// step #2
+// set delegate & selectors if you choose the target-selecors pattern
+// or set blocks
+// set other reqeust attributes such as progress watch, cache ...
+request.delegate = self;
 
 // step #3
-// set delegate & emit request ansynchronously
-request.delegate = self;
+// start this request operation
 [request startAsynchronous];
 ```
 
-Implement delegate methods to handle results (succeed or fail).
+Implement delegate methods to participate in the loading process, you choose
+the delegation pattern.
 
 1. implement `requestFinished:` delegate methods to fetch response content.
 
@@ -150,7 +131,8 @@ Implement delegate methods to handle results (succeed or fail).
 }
 ```
 
-1. implement `requestFailed:` delegate methods to handle failure.
+2. implement `requestFailed:` delegate methods to handle failure.
+
 ```objc
 // reqeust failed
 - (void)requestFailed: (ASIHTTPRequest *)request
@@ -159,22 +141,6 @@ Implement delegate methods to handle results (succeed or fail).
 }
 ```
 
-1. implement `setProgress:` delegate methods to report the download progress,
-   if you want.
-
-```objc
-#pragma mark - ASIProgressDelegate
-- (void)setProgress: (float)newProgress
-{
-  // average download speed in bytes/second
-  unsigned long byte = [ASIHTTPRequest averageBandwidthUsedPerSecond];
-
-  // current completion percent (between 0.0 ~ 1.0) from argument:
-  newProgress;
-}
-
-@end
-```
 
 Another alternative mentioned above is the target-selector pattern: setting
 selectors for success & fail handling respectively.
@@ -254,77 +220,112 @@ Alamofire.request(.GET, "http://httpbin.org/get", parameters: ["foo": "bar"])
 
 ## With ASIHTTPRequest
 
-Same as the 'Simle GET Request' above, excepts:
+Same as the above, excepts:
 
-+ You should initialize a instance of ASIFormDataRequest instead of
-  ASIHTTPRequest.
+You should initialize a instance of `ASIFormDataRequest` instead of
+`ASIHTTPRequest`, which provide a bunch of extra methods to help you with
+composing form data body.
 
-+ You set `setRequestMethod:` with `POST` parameter to switch to POST request
-  type.
+Set `setRequestMethod:` to `"POST"`, which is inherited from `ASIHTTPRequest`.
 
-+ You should call `addRequestHeader:` methods to add at least `Content-Type`
-  field.
+For request header, you can call `addRequestHeader: value:` to customize request header.
 
-+ You should put the query string in URL string into the HTTP request body by
-  calling `setPostBody` method, either in URL query string form or JSON form.
+For request body, you can either set it manually using `ASIHTTPRequest`'s methods:
 
 ```objc
-// step #1
-// use Url string to initialize a instance of ASIFormDataRequest
-
-  NSString *strURL = @"...";
-  // better call this method to ensure string is properly encoded.
-  NSURL *strURL = strURL stringByAddingPercentEscapesUsingEncoding: SUTF8StringEncoding];
-
-// step #2
-// set request methods to 'POST'
-
-  [self.formRequest setRequestMethod: "POST"];
-
-// step #3
-// add http request header & body respectively
-
-  self.formRequest = [ASIFormDataRequest requestWithURL: strURL];
-  [self.formRequest addRequestHeader: "Content-Type" value: "application/x-www-form-urlencoded"];
-
-  // body string in URL query string format
-  NSMutableData *body = [NSMutableData dataWithData:
-    [@"type=focus-c" dataUsingEncoding: SUTF8StringEncoding]];
-
-  // body string in JSON format
-  // NSMutableData *body = [NSMutableData dataWithData:
-    [@"p={\"a\": ,\"b\": }" dataUsingEncoding: NSUTF8StringEncoding]];
-
-  [self.formRequest setPostBody: NSMutableData*)[body dataUsingEncoding: NSUTF8StringEncoding]];
-
-  // ASIFormDataRequese provides a group of methods to help you // quickly
-  // construct the post body.
-  //
-  // setPostFilePath:
-  // ----
-  // setPostValue: forKey:
-  // addPostValue: forKey:
-  // ----
-  // setFile: forKey:
-  // setFile: withFileName: andContentType: forKey:
-  // ----
-  // setData: forKey:
-  // setData: withFileName: andContentType: forKey:
-  // ----
-  // setPostBody:
-  // setPostBodyFilePath:
-  // ----
-  // appendPostData:
-  // appendPostDataFromFile:
-
-// step #4
-// set delegate & emit request ansynchronously
-
-  [self.formRequest setDelegate: self];
-  [self.formRequest startAsynchronous];
+- (void)setPostBody:(NSMutableData)data
+- (void)appendPostData:(NSData *)data;            // body data kept in memory
+- (void)appendPostDataFromFile:(NSString *)file;  // streamed from disk, suite for large content uploading
 ```
 
-# Use Case #3 - Progress Watching
+or using `ASIFormDataRequest`s dedicated methods to compose request body:
+
+```objc
+// Using application/x-www-form-urlencoded Content-Type
+- (void)setPostValue:(id <NSObject>)value forKey:(NSString *)key;
+- (void)addPostValue:(id <NSObject>)value forKey:(NSString *)key;
+
+// Using multipart/form-data Content-Type
+- (void)addFile:(NSString *)filePath forKey:(NSString *)key;
+- (void)addFile:(NSString *)filePath withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key;
+- (void)setFile:(NSString *)filePath forKey:(NSString *)key;
+- (void)setFile:(NSString *)filePath withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key;
+
+- (void)addData:(NSData *)data forKey:(NSString *)key;
+- (void)addData:(id)data withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key;
+- (void)setData:(NSData *)data forKey:(NSString *)key;
+- (void)setData:(id)data withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key;
+```
+
+# Use Case #3 - Downlaod Task
+
+## 3.1 With ASIHTTPRequest
+
+After creating an ASIHTTPRequest instance
+
++ set `setDownlaodDestinationPath`
+
++ set `temporaryFileDownloadPath`
+
++ set `allowResumeForFileDownloads` to YES, which
+
+> tells ASIHTTPRequest not to delete partial downloads, and allows it to use an
+> existing file to resume a download. Defaults to NO.
+
+The names are very clarifying.
+
+# Use Case #4 - Progress Watching
+
+## 4.1 With ASIHTTPRequest
+
+First of all, set `showAccurateProgress` proeprty to `YES`, otherwise it would
+only notify you when a request is finished.
+
+For simple use case, just set a `UIProgressView` instance as the
+`ASIHTTPRequest`'s dowloadProgressDelegate.
+
+```objc
+// on ASI request object
+
+setDownloadProgressDelegate:
+setUploadProgressDelegate:
+
+// on delegate implement ...
+
+// for most cases
+- (void)setProgress:(float)newProgress;
+```
+
+Implement `setProgress:` delegate methods to report the download progress, if
+you want.
+
+```objc
+- (void)setProgress: (float)newProgress
+{
+  // average download speed in bytes/second
+  unsigned long byte = [ASIHTTPRequest averageBandwidthUsedPerSecond];
+
+  // current completion percent (between 0.0 ~ 1.0) from argument:
+  newProgress;
+}
+
+@end
+```
+
+If you need more detail. `ASIProgressDelegate` protocol provides following
+methods for you to implement, whose name is rather clarifying.
+
+```objc
+- (void)request:(ASIHTTPRequest *)request didReceiveBytes:(long long)bytes;
+
+- (void)request:(ASIHTTPRequest *)request didSendBytes:(long long)bytes;
+
+- (void)request:(ASIHTTPRequest *)request incrementDownloadSizeBy:(long long)newLength;
+
+- (void)request:(ASIHTTPRequest *)request incrementUploadSizeBy:(long long)newLength;
+```
+
+If you ask for more details, `ASIHTTPRequest` provides.
 
 # Framework Office Documentation
 
@@ -333,4 +334,3 @@ Same as the 'Simle GET Request' above, excepts:
 2. [AFNetworking](http://cocoadocs.org/docsets/AFNetworking/2.5.3/)
 
 3. [Alamofire](https://github.com/Alamofire/Alamofire)
-
