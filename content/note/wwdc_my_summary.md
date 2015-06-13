@@ -38,8 +38,14 @@ For those who are new to it, I highly recommend the [ASCIIwwdc](http://asciiwwdc
     1. ◎ - Best Practices for Cocoa Animation (2013)
     1. ◑ - Custom Transitions Using View Controllers (2013)
     1. ◑ - Building Adaptive Apps with UIKit (2014)
+    1. ◎ - Advanced Techniques with UIKit Dynamics (2013)
+
++ __Dynamics__
+
     1. ◎ - Getting Started with UIKit Dynamics (2013)
     1. ◎ - Advanced Techniques with UIKit Dynamics (2013)
+    1. ◎ - Creating Custom iOS User Interface (2014)
+    1. ◎ - What' New in UIKit Dynamics and Visual Effects (2015)
 
 + __Auto-Layout__
 
@@ -59,14 +65,17 @@ For those who are new to it, I highly recommend the [ASCIIwwdc](http://asciiwwdc
 
     see [Swift Resources Page](https://developer.apple.com/swift/resources/)
 
-    1. ◎  - Introduction to Swift
-    1. ◎  - Intermediate Swift
-    1. ◎  - Advanced Swift
-    1. ◎  - Swift Playgrounds
-    1. ◎  - Integrating Swift with Objective-C
-    1. ◎  - Swift Interoperability In Depth
-    1. ◎  - Introduction to LLDB and the Swift REPL
-    1. ◎  - Advanced Swift Debugging in LLDB
+    1. ◎  - Introduction to Swift (2014)
+    1. ◎  - Intermediate Swift (2014)
+    1. ◎  - Advanced Swift (2014)
+    1. ◎  - Swift Playgrounds (2014)
+    1. ◎  - Integrating Swift with Objective-C (2014)
+    1. ◎  - Swift Interoperability In Depth (2014)
+    1. ◎  - Introduction to LLDB and the Swift REPL (2014)
+    1. ◎  - Advanced Swift Debugging in LLDB (2014)
+    1. ◎  - What's New in Swift (2015)
+
+
 
 + __Text & Font__
 
