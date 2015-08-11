@@ -1,7 +1,7 @@
 +++
 date = "2015-05-09T09:42:03+08:00"
 draft = true
-title = "Swift 官博文章翻译 - 在 Swift 中构建 assert(), 第一部分：__FILE__ 和 __LINE__"
+title = "Swift 官博文章翻译 - 在 Swift 中实现 assert(), 第一部分：__FILE__ 和 __LINE__"
 
 tags      = ["Cocoa", "AppDev", "Translation", "Xcode"]
 languages = ["Swift", "ObjC", "Chinese", "English"]

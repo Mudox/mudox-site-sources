@@ -298,3 +298,20 @@ axe
 axiom, axiomatic  
 aphorism, aphorize  
 pith, pithy  
+
+* * *
+
+ablution  
+deluge  
+divulge  
+dilute, diluted, dilution  
+
+* * *
+
+eradicate  
+exterminate  
+extinguish  
+massacre  
+slaughter  
+carnage  
+eliminate  
