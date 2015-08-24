@@ -315,3 +315,30 @@ massacre
 slaughter  
 carnage  
 eliminate  
+obliterate  
+
+* * *
+
+impetus, impetuous, impetuously, impetuosity  
+perpetrate, perpetrator  
+perpetuate, perpetuity  
+
+* * *
+
+lenient, lenience, leniency  
+linen, linoleum  
+liaison  
+lien  
+
+* * *
+
+tar -> tarpaulin  
+flax -> linen -> linoleum  
+
+* * *
+
+wax -> linoleum  
+varnish -> wood  
+glaze -> porcelain  
+
+* * *
