@@ -1,7 +1,7 @@
 +++
 date = "2014-10-29T21:43:56+08:00"
 draft = true
-title = "SWIFT OJECT-ORIENTED FEATURE"
+title = "SWIFT OJECT - ORIENTED FEATURE"
 
 languages = ["Swift"]
 platforms = ["MacOS", "iOS"]

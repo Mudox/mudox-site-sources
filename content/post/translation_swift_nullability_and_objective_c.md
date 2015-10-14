@@ -17,15 +17,15 @@ Swift 语言的一个很棒的特性就是它能透明的和 Objective-C 代码�
 在此前的 Xcode 版本中，Apple 公司对一些框架做了特殊处理，以让它们在 Swift 被转换为适当的可为空类型。Xcode 6.3 引入了一个新的 Objective-C 特性：可为空性注释（nullability annotation），是的程序也能对自己的代码做出同样的处理。
 <!--more-->
 
-# 核心关键字: `__nullable`，`__nonnull`
+# 核心关键字: `_Nullable`，`_Nonnull`
 
-这项新特性的核心就是两个关键字：`__nullable`，`__nonnull`。正如你所想的那样，所有 `__nullable` 指针可以为 `NULL` 或者 `nil`，而所有 `__nonnull` 指针不行。如果你违反了此规则，编译器将会发出警告。
+这项新特性的核心就是两个关键字：`_Nullable`，`_Nonnull`。正如你所想的那样，所有 `_Nullable` 指针可以为 `NULL` 或者 `nil`，而所有 `_Nonnull` 指针不行。如果你违反了此规则，编译器将会发出警告。
 
 ```objc
 @interface AAPLList : NSObject <NSCoding, NSCopying>
 // ...
-- (AAPLListItem * __nullable)itemWithName:(NSString * __nonnull)name;
-@property (copy, readonly) NSArray * __nonnull allItems;
+- (AAPLListItem * _Nullable)itemWithName:(NSString * _Nonnull)name;
+@property (copy, readonly) NSArray * _Nonnull allItems;
 // ...
 @end
 
@@ -34,7 +34,7 @@ Swift 语言的一个很棒的特性就是它能透明的和 Objective-C 代码�
 [self.list itemWithName:nil]; // warning!
 ```
 
-在您的 Objective-C 代码中，您几乎可以在任何可以用到 `const` 关键字的地方使用 `__nullable`，`__nonnull`，当然必须是修饰指针类型。Swift 还未常用的场景提供了更加漂亮的注释方式：对于那些简单的对象类型或者块类型的类成员声明，您可以使用 `__nullable`，`__nonnull` 非下划线版本来就注释他们。
+在您的 Objective-C 代码中，您几乎可以在任何可以用到 `const` 关键字的地方使用 `_Nullable`，`_Nonnull`，当然必须是修饰指针类型。Swift 还未常用的场景提供了更加漂亮的注释方式：对于那些简单的对象类型或者块类型的类成员声明，您可以使用 `_Nullable`，`_Nonnull` 非下划线版本来就注释他们。
 
 ```objc
 - (nullable AAPLListItem *)itemWithName:(nonnull NSString *)name;
@@ -52,7 +52,7 @@ Swift 语言的一个很棒的特性就是它能透明的和 Objective-C 代码�
 
 # 监控区域（andited region)
 
-为了简化新注释关键字的使用，您可以把您的 Objective-C 头文件中的某段代码标记为 __对可为空性进行监控__。在此代码段中，所有的简单指针类型都被编译器默认认为是不可能为空的，也就是 `__nonnull`。这就大大减少了我们早前的示例中需要做的变动。
+为了简化新注释关键字的使用，您可以把您的 Objective-C 头文件中的某段代码标记为 __对可为空性进行监控__。在此代码段中，所有的简单指针类型都被编译器默认认为是不可能为空的，也就是 `_Nonnull`。这就大大减少了我们早前的示例中需要做的变动。
 
 ```objc
 NS_ASSUME_NONNULL_BEGIN
@@ -78,9 +78,9 @@ AAPLListItem *matchingItem = [self.list itemWithName:nil];  // warning
 
 * `typedef` 类型别名语句，根据上下文，本身就是有确定的可为空性。它不受监控区域假设的影响。也就是说在监控区域内，`typedef` 语句定义的指针类型并不是默认为 `nonnull` 的，而是取决于定义它的原始类型。
 
-* 复杂的指针类型必须明确的注释可为空性，不能省略。比如声明一个不可为空的指针只想一个可为空的对象的引用，必须用 `__nullable id * __nonnull` 来声明。
+* 复杂的指针类型必须明确的注释可为空性，不能省略。比如声明一个不可为空的指针只想一个可为空的对象的引用，必须用 `_Nullable id * _Nonnull` 来声明。
 
-* `NSError` 是一个特殊的类型，它被用来通过参数返回错误。它总是一个指向一个可为空 `NSError` 对象指针的可为空指针，即 `__nullable NSError * __nullable`。
+* `NSError` 是一个特殊的类型，它被用来通过参数返回错误。它总是一个指向一个可为空 `NSError` 对象指针的可为空指针，即 `_Nullable NSError * _Nullable`。
 
 # 兼容性
 

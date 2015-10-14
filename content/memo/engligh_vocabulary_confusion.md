@@ -342,3 +342,36 @@ varnish -> wood
 glaze -> porcelain  
 
 * * *
+
+plum, prune  
+plume, plumage  
+plummet  
+plumb, plumber, plumbing  
+
+* * *
+
+clay  
+glaze  
+porcelain  
+
+
+* * *
+
+pottery  
+crockery  
+ceramic  
+china  
+porcelain  
+stoneware  
+earthenware  
+
+* * *
+
+kelvin  
+celsius  
+fahrenheit  
+
+* * *
+spices, spicy  
+specious  
+species, subspecies  

@@ -7,9 +7,8 @@ languages = ["Swift"]
 platforms = ["MacOS", "iOS"]
 +++
 
-Thanks to the host of technologies provided by the Swift
-compiler, the closure comes with a bunch of syntactic
-sugars that could sweet you to diabetes.
+Thanks to the host of technologies provided by the Swift compiler, the closure
+comes with a bunch of syntactic sugars that could sweet you to diabetes.
 <!--more-->
 
 The full syntax of a closure:
@@ -31,8 +30,9 @@ let sortedWords = words.sorted({
   return lhs < rhs
 })
 ```
-As the sugars introduced in, we will cut the lines above into an incredibly one
-line of code.
+
+As the sugars introduced in one by one, we will cut the lines above into an
+incredibly one-liner.
 
 # Sugar #0 -- trailing closure
 
@@ -83,7 +83,7 @@ let sortedWords = words.sorted {
 }
 ```
 
-# Sugar #4 -- return statement inference
+# Sugar #4 -- auto return for single expression closure
 
 If the closure has one statement, then the __return__ statement can also be
 inferred.
@@ -121,3 +121,4 @@ In swift, __operator__ is a function, which in turn is a __special closure__, so
 // comes operator!
 let sortedWords = words.sorted(<)
 ```
+

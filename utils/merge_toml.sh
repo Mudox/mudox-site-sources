@@ -1,4 +1,4 @@
-#!/bin/sh
+ert!/bin/sh
 
 for f in ../content/**/*.md; do
   echo "[$(basename "${f}" '.md')]"

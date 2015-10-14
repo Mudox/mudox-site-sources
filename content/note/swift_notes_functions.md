@@ -19,27 +19,24 @@ Programming Language》](http://developer.apple.com/library/prerelease/ios/docum
 A parameter name can have a __internal name__ and an __external name__ declared
 in the form of: `external_name internal_name: type`.
 
-```swift
-func join(String string: leftString, toString rightString) -> String {
-  return leftString + rightString
-}
-
-println(join(String: "Hello", toString: " World!"))
-```
-
-Use `#` to use the same name for both names: `#name: type`
+Explicitly specify an external name for the first parameter to enable it when
+calling.
 
 ```swift
-func join(#aString: leftString, #toString) -> String {
-  return aString + toString
+func join(aString lhs: String, toString rhs: String) -> String {
+  return lhs + rhs
 }
 
 println(join(aString: "Hello", toString: " World!"))
 ```
 
-Use `_` to suppress external name: `_ internal_name: type`
+Swift compiler automatically generates external name from corresponding
+internal names of all parameters except the 1st parameter.
+
+Use `_` to suppress auto-generating external name: `_ internal_name: type`
+
 ```swift
-func join(_ aString: leftString, _ toString) -> String {
+func join(_ aString: String, _ toString: String) -> String {
   return aString + toString
 }
 
@@ -48,20 +45,15 @@ println(join("Hello", " World!"))
 
 ## Parameters with default value
 
-Default parameter values of the `[external_name /_/#]internal_name: type =
-default_value` should be placed at end of the parameter list.
-
-The compiler will synthesize a external name by reusing the internal name for
-parameters with default value, if their external name is not explicitly
-specified in the parameter list. (You can use `_` to suppress this behavior,
-which is not recommended.)
+Parameters with default value of the form `[external_name/_] internal_name:
+type = default_value` are **better** be placed at end of the parameter list.
 
 ```swift
-func Foo(arg1: String, arg2: Int = 30, _ arg3: Bool, #arg4: Double) {
+func Foo(arg1: String, arg2: Int = 30, _ arg3: Bool) {
   ...
 }
 
-Foo("text", arg2: 1, true, arg4: 4.0)
+Foo("text", arg2: 1, true)
 ```
 
 ## Variadic parameters
@@ -69,8 +61,7 @@ Foo("text", arg2: 1, true, arg4: 4.0)
 Declare variadic parameter in form `name: type...`, which, in the function
 body, is of type `[type]`.
 
-Only one variadic parameter is allowed in a parameter list, and it should be
-placed after all other normal parameters or parameters with default value.
+**Only one** variadic parameter is allowed in a parameter list.
 
 ## Variable parameters
 
@@ -82,15 +73,17 @@ the function body will not propagate outside the function body.
 
 ## In-Out parameters
 
-Prefix parameters names with keyword `inout` (which implies `var`) to make the
-change to the parameter inside function body propagate outside.
+Prefix parameters names with keyword `inout` to propagate the change to the
+parameter inside function body outside.
 
 When specifying argument for `inout` parameters, prepend `&` to the argument
 name to indicate that it could be modified during the function call.
 
-In-out parameters cannot have default values, and variadic parameters cannot be
-marked as `inout`. If you mark a parameter as `inout`, it cannot also be marked
-as var or let.
+In-out parameters
+
++ cannot have default values
++ cannot be variadic parameter
++ implies `var`, so cannot be marked as `var` or `let`
 
 ```swift
 func swapTwoInts(inout a: Int, inout b: Int) {
@@ -116,7 +109,9 @@ function to return multiple values as part of one compound return value.
 
 ```swift
 // wrap multiple return values in an optional tuple.
-func minMax(array: [Int]) -> (min: Int, max: Int)? { ... }
+func minMax(array: [Int]) -> (min: Int, max: Int)? {
+  return (1, 3) // no need to specify tuple element names again
+}
 
 if let minMax = minMax([1,2,3]) {
   // use name to fetch tuple element.
@@ -129,23 +124,27 @@ if let minMax = minMax([1,2,3]) {
 
 # Function Types
 
+A function type is made up of its' parameter types and return type.
+
 In Swift, function is first class object, so feel free to use them as other
 normal objects:
 
-+ passing them as argument into functions.
++ declare constants or variables to hold them, and call them latter.
+
++ passing them as arguments into functions.
 
 + return them from functions.
 
 + declare theme as type alias for convenience.
 
-+ even nest their in another function.
-
-+ ...
++ even nest them in another function.
 
 ```swift
+// declare a type alias for long function types
 typealias cmp = (Int, Int) -> Bool
 
 func whichCmp(functionPassedIn: ()-> Bool) -> cmp {
+  // nested fucntion definition
   func Foo(lhs: Int, rhs: Int) -> Bool {
     return false
   }
@@ -154,6 +153,7 @@ func whichCmp(functionPassedIn: ()-> Bool) -> cmp {
     return true
   }
 
+  // function being returned
   return functionPassedIn() ? Foo : Hoo
 }
 
@@ -161,5 +161,6 @@ func aFunc() -> Bool {
   return false
 }
 
+// function being passed in as an argument
 whichCmp(aFunc)(1334, 234)
 ```

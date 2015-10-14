@@ -1,7 +1,7 @@
 +++
 date = "2015-05-09T09:42:03+08:00"
 draft = true
-title = "Swift 官博文章翻译 - 在 Swift 中实现 assert(), 第一部分：__FILE__ 和 __LINE__"
+title = "Swift 官博文章翻译 - 在 Swift 中实现 assert(), 第二部分：__FILE__ 和 __LINE__"
 
 tags      = ["Cocoa", "AppDev", "Translation", "Xcode"]
 languages = ["Swift", "ObjC", "Chinese", "English"]
@@ -36,7 +36,7 @@ func assert(predicate : @autoclosure () -> Bool) {
 
 # 获取调用者的位置
 
-Swift 从 D 语言那里借鉴来一个非常聪明的做法：讲这些特殊的位置标识符作为参数的默认值。于是我们将 `asssert()` 函数定义为：
+Swift 从 D 语言那里借鉴来一个非常聪明的做法：将这些特殊的位置标识符作为参数的默认值。于是我们将 `asssert()` 函数定义为：
 
 ```swift
 func assert(
