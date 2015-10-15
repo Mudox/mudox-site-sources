@@ -41,9 +41,9 @@ Notes:
 
 There are 3 ways a stored property can get an initial value:
 
-1. set value in initializer
-2. set default value in property declaration
-3. optional stored properties get `nil` as default value, if given no default value
+1. Set value in initializer
+2. Set default value in property declaration
+3. Optional stored properties get `nil` as default value, if given no default value
 
 Notes:
 
@@ -67,14 +67,14 @@ class Foo {
 
 ## Constant stored property iniitialization
 
-for constant stored property, if you given a default value in definition,
+For constant stored property, if you given a default value in definition,
 then it's initialization is complete, you CAN NOT modify it's value later
 in initializers.
 
-you can define a constant stored property with no default value, and set an
+You can define a constant stored property with no default value, and set an
 initial value latter in the initializers
 
-for class instances, a constant stored property can only be modified during
+For class instances, a constant stored property can only be modified during
 initialization by the class that introduces it. It cannot be modified by a
 subclass.
 
@@ -158,3 +158,20 @@ considered as a overriding_)
    designated initializers—either by inheriting them as per rule 1, or by
    providing a custom implementation as part of its definition—then it
    automatically inherits all of the superclass convenience initializers.
+
+# Failable Initiializer
+
+Use `init?() {...}` or `init!() {...}` to define a failable initializer
+
+Use `return nil` to fail the initialization process though the Swift
+initializer dose not return any value
+
+When defining failable initializer:
+
++ for `struct` & `enum`, it can fail before all stored properties are given a
+  valid initial value.
++ for `class`, only after the 1st initialization is completed can it fail.
+
+you can use constant implicitly unwrapped optional property to satisfy rule #2
+without first assign an valid initial value to it.
+

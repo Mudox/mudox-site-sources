@@ -13,4 +13,4 @@ AMap (高德地图) APIs depicted in several graphs I draw.
 
 # AMap Searching API
 
-![AMap Searching API Graph](../../../note/amap_searching_graph.svg)
+![AMap Searching API Graph](/note/amap_searching_graph.svg)

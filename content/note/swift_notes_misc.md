@@ -25,5 +25,8 @@ Only allowed in one direction
 
 * override read-only property -> read-write property
 * override failable initialiser -> unfailable initializer
-* override designated initializer -> convenience initializer
 * failable initializer can delegate -> failable/unfailable initializer
+
+About overriding initializer
+
+![initializer override](/note/initializer_override.svg)

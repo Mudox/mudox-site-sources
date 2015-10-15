@@ -38,3 +38,12 @@ Features exclusively owned by `structure`
 Features exclusively owned by `enum`
 
 1. __self assigning__
+
+When defining failable initializer:
+
++ for `struct` & `enum`, it can fail before all stored properties are given a
+  valid initial value.
++ for `class`, only after the 1st initialization is completed can it fail.
+
+You can use constant implicitly unwrapped optional property to satisfy rule #2
+without first assign an valid initial value to it.
