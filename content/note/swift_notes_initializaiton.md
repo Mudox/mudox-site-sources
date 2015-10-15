@@ -172,6 +172,6 @@ When defining failable initializer:
   valid initial value.
 + for `class`, only after the 1st initialization is completed can it fail.
 
-you can use constant implicitly unwrapped optional property to satisfy rule #2
+You can use constant implicitly unwrapped optional property to satisfy rule #2
 without first assign an valid initial value to it.
 
