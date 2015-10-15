@@ -175,3 +175,13 @@ When defining failable initializer:
 You can use constant implicitly unwrapped optional property to satisfy rule #2
 without first assign an valid initial value to it.
 
+# Required Initiializer
+
+Write `required` before the definition of Initiializer to indicate that every
+subclass of this class must implement that Initiializer
+
+The `required` keyword implies `override` in subclasses
+
+You don't have to provide an explicit implementation if the Initiializer can be
+inherited
+
