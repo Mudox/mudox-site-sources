@@ -372,6 +372,23 @@ celsius
 fahrenheit  
 
 * * *
+
 spices, spicy  
 specious  
 species, subspecies  
+
+* * *
+
+plateau  
+highland  
+mesa  
+plain, flatland  
+
+* * *
+
+plate  
+platen  
+platelet  
+plateau  
+palette  
+

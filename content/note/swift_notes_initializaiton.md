@@ -65,7 +65,7 @@ class Foo {
 }
 ```
 
-## Constant stored property iniitialization
+## Constant stored property initialization
 
 For constant stored property, if you given a default value in definition,
 then it's initialization is complete, you CAN NOT modify it's value later
@@ -109,8 +109,8 @@ to default or memberwise initializer in the body.
 
 `class` can define 2 kinds of initializers:
 
-1. designated initializers -- `init(...)`
-2. convenience initializers -- `convenience init(...)`
+1. Designated initializers -- `init(...)`
+2. Convenience initializers -- `convenience init(...)`
 
 ## 3 rules for class initializer delegation
 
@@ -121,12 +121,12 @@ to default or memberwise initializer in the body.
 
 put simply:
 
-1. convenience initializer delegation across -- `init(...)`
-2. designated initializer delegation upwards -- `super.init(...)`
+1. Convenience initializer delegation across -- `init(...)`
+2. Designated initializer delegation upwards -- `super.init(...)`
 
 ## Two-Phase Initialization
 
-4 safty checks that Swift compiler perform to ensure 2-phase initialization:
+4 safety checks that Swift compiler perform to ensure 2-phase initialization:
 
 1. In designated initializer, initialize all local stored properties before
    delegate up
@@ -152,14 +152,14 @@ considered as a overriding_)
 
 ### 2 prerequisites for automatic initializer inheritance
 
-1. if your subclass doesn’t define any designated initializers, it
+1. If your subclass doesn't define any designated initializers, it
    automatically inherits all of its superclass designated initializers.
 2. If your subclass provides an implementation of all of its superclass
    designated initializers—either by inheriting them as per rule 1, or by
    providing a custom implementation as part of its definition—then it
    automatically inherits all of the superclass convenience initializers.
 
-# Failable Initiializer
+# Failable Initializer
 
 Use `init?() {...}` or `init!() {...}` to define a failable initializer
 
@@ -175,13 +175,13 @@ When defining failable initializer:
 You can use constant implicitly unwrapped optional property to satisfy rule #2
 without first assign an valid initial value to it.
 
-# Required Initiializer
+# Required Initializer
 
-Write `required` before the definition of Initiializer to indicate that every
-subclass of this class must implement that Initiializer
+Write `required` before the definition of initiializer to indicate that every
+subclass of this class must implement that initiializer
 
 The `required` keyword implies `override` in subclasses
 
-You don't have to provide an explicit implementation if the Initiializer can be
+You don't have to provide an explicit implementation if the initiializer can be
 inherited
 
