@@ -354,16 +354,15 @@ clay
 glaze  
 porcelain  
 
-
 * * *
 
 pottery  
 crockery  
-ceramic  
+ceram, ceramic  
+earthenware  
+stoneware  
 china  
 porcelain  
-stoneware  
-earthenware  
 
 * * *
 
@@ -391,4 +390,3 @@ platen
 platelet  
 plateau  
 palette  
-
