@@ -14,6 +14,8 @@ My awesome list about the Bash programming language.
 
 + [bahamas10/bash-style-guide](https://github.com/bahamas10/bash-style-guide)
     -- Aimed to write Bash Specific code
++ [bash academy](http://guide.bash.academy)
+    -- The new version above (_currently under construction_)
 + [azet/community_bash_style_guide](https://github.com/azet/community_bash_style_guide)
     -- Aimed to write portable & more secure code
 + [style guide from Bash Hackers Wiki](http://wiki.bash-hackers.org/scripting/style)
