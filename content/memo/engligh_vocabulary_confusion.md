@@ -38,7 +38,7 @@ analgesic, analgesia
 anesthetic, anesthesia  
 anaesthetic, anaesthesia  
 antibiotic  
-antibody  
+/ntibody  
 antidote  
 antiseptic, aseptic  
 
@@ -390,3 +390,9 @@ platen
 platelet  
 plateau  
 palette  
+
+* * *
+
+endorse  
+dorsal  
+docile  
