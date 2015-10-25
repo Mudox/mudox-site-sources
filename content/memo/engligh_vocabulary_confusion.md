@@ -9,7 +9,7 @@ languages = ["English"]
 
 Words groups I collected when expand my vocabulary.
 
-Will expand it day by day!
+I expand it day by day!
 <!--more-->
 
 > Hew out of the mountain of despair a stone of hope and you can make you life
@@ -17,7 +17,7 @@ Will expand it day by day!
 
 * * *
 
-amnesia  
+amnesia, mnemonic  
 anemia (anaemia), anaemic  
 anorexia  
 
@@ -25,9 +25,12 @@ anorexia
 
 similar, similarity  
 simulate, dissimulate ( = dissemble ), imitate, emulate  
-assimilation <-> dissimilation != dissemination  
+assimilate, assimilation <-> dissimilate, dissimilation != dissemilate, dissemination  
 stipulate  
 stimulate, stimulus, stimulant  
+
+* * *
+
 imitate  
 intimate  
 intimidate == browbeat, bluster, cow, intimidating == intimidatory, intimidator, intimidation  
@@ -35,10 +38,9 @@ intimidate == browbeat, bluster, cow, intimidating == intimidatory, intimidator,
 * * *
 
 analgesic, analgesia  
-anesthetic, anesthesia  
-anaesthetic, anaesthesia  
+an(a)esthetic, an(a)esthesia  
 antibiotic  
-/ntibody  
+antibody  
 antidote  
 antiseptic, aseptic  
 
@@ -396,3 +398,40 @@ palette
 endorse  
 dorsal  
 docile  
+
+* * *
+
+protean  
+protein  
+methane  
+ethane  
+propane  
+
+* * *
+
+sport shirts  
+vest, T-shirt, undershirt  
+sweater  
+running shoes, jersey  
+kneelet, knee cap  
+
+* * *
+
+bag  
+portfolio  
+briefcase  
+knapsack, hiking bag  
+
+* * *
+
+surge
+resurrect, resurrection == resurgent, resurgence  
+insurrection, insurrectionist, insurrectionary == insurgent, insurgence, insurgency  
+rebel, rebellion, rebellious, rebelliousness  
+
+* * *
+
+surgeon, surgery  
+burgeon  
+curmudgeon  
+pigeon  
