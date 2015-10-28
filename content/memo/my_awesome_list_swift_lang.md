@@ -10,6 +10,13 @@ languages = ["Swift"]
 My awesome list about the Swift programming language.
 <!--more-->
 
+# Official
+
++ [Language Guide](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID158)
++ [Language Reference](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AboutTheLanguageReference.html#//apple_ref/doc/uid/TP40014097-CH29-ID345)
++ [Standard Library](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/)
++ [Resource Index](https://developer.apple.com/swift/resources/)
+
 # Style Guides
 
 + [github/swift-style-guide](https://github.com/github/swift-style-guide.git)

@@ -2,7 +2,7 @@
 date      = "2015-09-29T04:25:45+08:00"
 author    = "Mudox"
 draft     = true
-title     = "SWIFT NOTES - COLLECION TYPES"
+title     = "SWIFT NOTES - COLLECTION TYPES"
 
 tags      = ["AppDev"]
 languages = ["Swift"]
@@ -22,7 +22,7 @@ Type notation:
 
 Initializes an array:
 
-* with no element
+* with zero elements
 
 ```swift
 // full syntax
@@ -32,9 +32,10 @@ let a = Array<Element>()
 let a = [Element]()
 
 // shortest syntax when the type inference is present
+// `[]` here is the empty array literal with the assistence of type inference
 let a: [Element] = []
 
-func dealWith(array: [Int]) {
+func dealWith(array: [Element]) {
 // ...
 }
 
@@ -63,6 +64,7 @@ let a = a1 + a2
 
 ```swift
 let a = ["Eggs", "Oil"]
+let b: [Int] = [] // is equivalent to `let b = [Int]()`
 ```
 
 # Set
@@ -91,19 +93,45 @@ func dealWith(set: Set<Int>) {
 dealWith(set: [])
 ```
 
-* with an array literal
+* with an __array__ literal
 
 ```swift
-// similar with array, but must be annotated as a Set type explicitly.
+// similar with array, but must be annotated as a Set type explicitly, thus
+// force converting the array literal into a set
 let a: Set<String> = ["Apple", "iOS", "Mac OS X"]
+
 // annotation can be shortened by type inference
 let a: Set = [1, 2, 3]
 ```
 
 # Dictionary
 
-Type annotaion:
+Type annotation:
 
 * Full type name `Dictionary<Key, Value>`
 
-* Shorthand & preferred name `[Key: Value]`
+* Shorthand & preferred type name `[Key: Value]`
+
+Initializes an array:
+
+* with zero elements
+
+```swift
+// full syntax
+let a = Dictrionary<Key: Value>()
+
+// short & preferred syntax
+let a = [Key: Value]()
+
+// shortest syntax when the type inference is present
+// `[:]` here is the empty dictionary literal with the assistence of type inference
+let a: [Key: Value] = [:]
+
+func dealWith(array: [Key: Value]) {
+// ...
+}
+
+dealWith(array: [:])
+```
+
+* 
