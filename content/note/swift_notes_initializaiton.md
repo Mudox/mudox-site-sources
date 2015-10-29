@@ -112,7 +112,7 @@ to default or memberwise initializer in the body.
 1. Designated initializers -- `init(...)`
 2. Convenience initializers -- `convenience init(...)`
 
-## 3 rules for class initializer delegation
+## <span style="color:red; font-size:1.5em">3</span> rules for class initializer delegation
 
 1. A designated initializer must call a designated initializer from its
    immediate superclass.
@@ -121,12 +121,10 @@ to default or memberwise initializer in the body.
 
 put simply:
 
-1. Convenience initializer delegation across -- `init(...)`
+1. Convenience initializer delegation across -- `self.init(...)`
 2. Designated initializer delegation upwards -- `super.init(...)`
 
-## Two-Phase Initialization
-
-4 safety checks that Swift compiler perform to ensure 2-phase initialization:
+## <span style="color:red; font-size:1.5em">2</span>-Phase Initialization Ensured by <span style="color:red; font-size:1.5em">4</span> Safty Checks
 
 1. In designated initializer, initialize all local stored properties before
    delegate up
@@ -136,10 +134,10 @@ put simply:
 4. In any initializers, only after the 1st-phase initialization is complete
    then it can
     - call any instance methods or subscripts
-    - read any instance properties
+    - read any instance properties (stored or computed)
     - reference `self` as an value
 
-## Initialization inheritance & overriding
+# Initialization inheritance & overriding
 
 Unlike subclasses in Objective-C, Swift subclasses do __NOT__ inherit their
 superclass initializers by default. Only when certain rules are satisfied can
@@ -150,7 +148,7 @@ implementation of a superclass __convenience initializer__ (_because it can not
 delegate up to it counterpart in superclass, the implementation is not
 considered as a overriding_)
 
-### 2 prerequisites for automatic initializer inheritance
+## <span style="color: red; font-size: 1.5em">2</span> prerequisites for automatic initializer inheritance
 
 1. If your subclass doesn't define any designated initializers, it
    automatically inherits all of its superclass designated initializers.
