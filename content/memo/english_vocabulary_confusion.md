@@ -424,7 +424,7 @@ knapsack, hiking bag
 
 * * *
 
-surge
+surge  
 resurrect, resurrection == resurgent, resurgence  
 insurrection, insurrectionist, insurrectionary == insurgent, insurgence, insurgency  
 rebel, rebellion, rebellious, rebelliousness  
@@ -435,3 +435,55 @@ surgeon, surgery
 burgeon  
 curmudgeon  
 pigeon  
+
+* * *
+
+agile, agility  
+fragile, fragility, crisp, brittle, delicate  
+
+* * *
+
+anaerobe, anaerobic  
+anhydrous, dehydrate  
+anorexia, anorexic  
+
+* * *
+
+affable  
+amiable, amiability  
+amity <-> enmity  
+amicable  
+
+* * *
+
+acuity  
+acumen  
+
+* * *
+
+unmeasurable, immeasurable  
+mensurate, immensurable  
+commensurate
+
+* * *
+
+limber  
+lumber  
+grumpy  
+grumble  
+
+* * *
+
+squeeze  
+squal  
+squelch, squash, quell  
+mash, smash  
+mars  
+pulp  
+rush, crush  
+rash, crash  
+clash  
+crumb, crumble  
+rumple, crumple  
+rumble, grumble  
+grump, grumpy  
