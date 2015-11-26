@@ -44,6 +44,11 @@ My awesome list about the Swift programming language.
 
 # 3-Party Packages
 
++ [iOS Cookies](http://www.ioscookies.com/)
+
+    A hand curated collection of iOS libraries written in Swift
+    ![Swift Cookies Logo](http://www.ioscookies.com/user/themes/ioscookies/images/header-logo.png)
+
 + [Readchability.swift](https://github.com/ashleymills/Reachability.swift)
 
     Replacement for Apple's Reachability re-written in Swift with closures
