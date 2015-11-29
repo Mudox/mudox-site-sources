@@ -463,7 +463,7 @@ acumen
 
 unmeasurable, immeasurable  
 mensurate, immensurable  
-commensurate
+commensurat  
 
 * * *
 

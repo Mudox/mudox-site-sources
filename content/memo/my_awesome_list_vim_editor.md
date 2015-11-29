@@ -1,4 +1,4 @@
-+++
++++kk
 date      = "2015-10-25T12:01:48+08:00"
 draft     = true
 title     = "MY AWESOME LIST - (Neo)Vim Editor"
@@ -22,7 +22,8 @@ My awesome list about the (Neo)Vim Editor.
 
 + [Anti-Pattern of vimrc](http://rbtnn.hateblo.jp/entry/2014/12/28/010913)
 
-    some good patterns vs bad patterns
+    some good patterns vs bad patterns, the plugin
+    [vint](https://github.com/Kuniwak/vint) adopts rules described here.
 
 # Test & CI
 
