@@ -133,5 +133,3 @@ func dealWith(array: [Key: Value]) {
 
 dealWith(array: [:])
 ```
-
-* 

@@ -487,3 +487,15 @@ crumb, crumble
 rumple, crumple  
 rumble, grumble  
 grump, grumpy  
+
+* * *
+
+kudos
+judo
+karate
+aikido
+koans
+
+cliche
+niche
+attache

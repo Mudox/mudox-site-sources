@@ -3,7 +3,7 @@ date      = "2015-10-16T14:26:13+08:00"
 draft     = true
 title     = "MY AWESOME LIST - BASH"
 
-tags      = ["AWESOME"]
+series    = ["Awesome List"]
 languages = ["Bash"]
 +++
 

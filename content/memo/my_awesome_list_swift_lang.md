@@ -3,7 +3,7 @@ date      = "2015-10-16T13:42:52+08:00"
 draft     = true
 title     = "MY AWESOME LIST - SWIFT"
 
-tags      = ["AWESOME"]
+series      = ["Awesome List"]
 languages = ["Swift"]
 +++
 
@@ -12,10 +12,18 @@ My awesome list about the Swift programming language.
 
 # Official
 
-+ [Language Guide](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID158)
-+ [Language Reference](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AboutTheLanguageReference.html#//apple_ref/doc/uid/TP40014097-CH29-ID345)
-+ [Standard Library](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/)
-+ [Resource Index](https://developer.apple.com/swift/resources/)
++ [Swift Language Guide](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID158)
++ [Swift Language Reference](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AboutTheLanguageReference.html#//apple_ref/doc/uid/TP40014097-CH29-ID345)
++ [Swift Standard Library](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/)
++ [Swift Resource Index](https://developer.apple.com/swift/resources/)
+
+## Swift is Now Open Sourced
+
++ [Swift Open Source Homepage](https://swift.org)
++ [Swift Github Repository](https://github.com/apple/swift)
++ [Swift Evolution](https://github.com/apple/swift-evolution)
+
+    New language features for next release proposed here
 
 # Style Guides
 
@@ -29,7 +37,6 @@ My awesome list about the Swift programming language.
 + [SwiftLint](https://github.com/realm/SwiftLint)
 
     Lint tool, integates into Xcode's warnings & errors widget.
-    ![Swift Lint Screenshot](https://github.com/realm/SwiftLint/raw/master/screenshot.png)
 
 # For Interviewers
 
@@ -47,7 +54,6 @@ My awesome list about the Swift programming language.
 + [iOS Cookies](http://www.ioscookies.com/)
 
     A hand curated collection of iOS libraries written in Swift
-    ![Swift Cookies Logo](http://www.ioscookies.com/user/themes/ioscookies/images/header-logo.png)
 
 + [Readchability.swift](https://github.com/ashleymills/Reachability.swift)
 
@@ -55,7 +61,8 @@ My awesome list about the Swift programming language.
 
 + [Venice](https://github.com/Zewo/Venice)
 
-    [CSP](https://en.wikipedia.org/wiki/Communicating_sequential_processes) for Swift 2 (Linux ready)
+    [CSP](https://en.wikipedia.org/wiki/Communicating_sequential_processes) for
+    Swift 2 (Linux ready)
 
 + [jazzy](https://github.com/realm/jazzy)
 
@@ -70,7 +77,6 @@ My awesome list about the Swift programming language.
 + [Alamofire](https://github.com/Alamofire/Alamofire)
 
     HTTP networking library written in Swift
-    ![Alamofire logo](https://raw.githubusercontent.com/Alamofire/Alamofire/assets/alamofire.png)
 
 ## Data Handling
 
@@ -84,7 +90,8 @@ My awesome list about the Swift programming language.
 
 + [Argo](https://github.com/thoughtbot/Argo)
 
-    Functional JSON parsing library for Swift [https://thoughtbot.com/open-source](https://thoughtbot.com/open-source)
+    Functional JSON parsing library for Swift
+    [https://thoughtbot.com/open-source](https://thoughtbot.com/open-source)
 
 + [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
 
@@ -99,7 +106,6 @@ My awesome list about the Swift programming language.
 + [Carthage](https://github.com/Carthage/Carthage)
 
     A simple, decentralized dependency manager for Cocoa
-    ![Carthage logo](https://github.com/Carthage/Carthage/raw/master/Logo/PNG/header.png)
 
 + [CocoaPods](https://cocoapods.org/)
 
@@ -107,5 +113,6 @@ My awesome list about the Swift programming language.
 
 + [ios-charts](https://github.com/danielgindi/ios-charts)
 
-    An iOS port of the beautiful [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart). - Beautiful charts for iOS apps!
-    ![ios-charts logo](https://camo.githubusercontent.com/5ab4074d113a7b1f66f061324bf64d34d276ade3/68747470733a2f2f7261772e6769746875622e636f6d2f64616e69656c67696e64692f696f732d6368617274732f6d61737465722f4173736574732f666561747572655f677261706869632e706e67)
+    An iOS port of the beautiful
+    [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart). - Beautiful
+    charts for iOS apps!
