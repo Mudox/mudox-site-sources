@@ -6,11 +6,14 @@ title     = "COMPARE LANGUAGE I LEARNED"
 languages = ["Swift", "ObjC", "Python", "VimL", "Ruby", "Go", "C", "Bash"]
 +++
 
-|       |Swift  |ObjC   |Python   |Ruby  |VimL  |Lua  |Go  |C/C++  |
-|-------|-------|-------|------   |----- |------|-----|----|-------|
-|else if|else if|else if|elif     |elsif |elseif|?    |?   |else if|
-|print  |print  |NSLog  |?        |print |echo  |?    |?   |printf |
-|println|print  |NSLog  |print    |puts  |echon |?    |?   |printf |
-|printf |NString|NString|{} syntax|printf|printf|?    |?   |printf |
-|len    |.count |.count |len()    |.size |len() |?    |?   |sizeof |
-|inherit|:      |:      |()       |<     |      |?    |?   |:      |
+|       |Swift                  |ObjC                |C/C++      |Python                        |Ruby              |VimL          |Lua  |Go  |
+|-------|-------                |-------             |-------    |------                        |-----             |------        |-----|----|
+|else if|else if                |else if             |else if    |elif                          |elsif             |elseif        |?    |?   |
+|print  |print                  |NSLog               |printf     |?                             |print             |echo          |?    |?   |
+|println|print                  |NSLog               |printf     |print                         |puts              |echon         |?    |?   |
+|printf |NString                |NString             |printf     |{} syntax                     |printf            |printf        |?    |?   |
+|len    |.count                 |.count              |sizeof     |len()                         |.size == .count   |len()         |?    |?   |
+|inherit|:                      |:                   |:          |()                            |<                 |              |?    |?   |
+|main() |main()                 |main()              |main()     |\_\_name\_\_ == '\_\_main\_\_'|$0 == \_\_FILE\_\_|n/a           |?    |?   |
+|new    |Class()                |[[Class alloc] init]|new Class()|Class()                       |Class.new         |n/a           |?    |?   |
+|join   |seq.joinWithSeparator()|?                   |n/a        |sep.join(seq)                 |seq.join(sep)     |join(seq, sep)|?    |?   |

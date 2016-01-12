@@ -1,5 +1,5 @@
 +++
-date      = "2015-12-06T22:49:21+08:00"
+date      = "2015-12-28T04:10:24+08:00"
 draft     = true
 title     = "MY AWESOME LIST - RUBY"
 
@@ -16,11 +16,15 @@ My awesome list about the Ruby programming language
 
     A community-driven Ruby coding style guide
 
-# Learning Ruby
++ [Practicing Ruby](https://practicingruby.com/)
+
+    Delightful lessons for dedicated programmers
 
 + [Ruby Monk](https://rubymonk.com)
 
     Interactive Ruby tutorials
+
++ [TutorialsPoint - Ruby](http://www.tutorialspoint.com/ruby/index.htm)
 
 + [Ruby From Other Language](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages)
 

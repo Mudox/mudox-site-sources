@@ -17,7 +17,3 @@ My internet bookmarks.
 + [Ruby](memo/my_awesome_list_ruby_lang)
 
 # Other
-
-+ [Ruby](memo/my_awesome_list_vim_editor)
-
-

@@ -10,6 +10,8 @@ languages = ["Swift"]
 My awesome list about the Swift programming language.
 <!--more-->
 
++ [Awesome Swift Education](https://github.com/hsavit1/Awesome-Swift-Education)
+
 # Official
 
 + [Swift Language Guide](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID158)
@@ -116,3 +118,8 @@ My awesome list about the Swift programming language.
     An iOS port of the beautiful
     [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart). - Beautiful
     charts for iOS apps!
+
+# Articles
+
++ [Swift Functors, Applicatives, and Monads in Pictures](http://www.mokacoding.com/blog/functor-applicative-monads-in-pictures/)
++ [Swift Optional, Functional Programming and You](http://www.mokacoding.com/blog/demistifying-swift-functor/)
