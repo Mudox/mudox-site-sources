@@ -103,13 +103,23 @@ My awesome list about the Swift programming language.
 
     Swift object serialization
 
-## Dependency Managers
+## Package Managers
 
 + [Carthage](https://github.com/Carthage/Carthage)
 
-    A simple, decentralized dependency manager for Cocoa
+    A simple, decentralized dependency manager for Cocoa.
 
 + [CocoaPods](https://cocoapods.org/)
+
+    The currently most popular one in community.
+
++ [Swift Package Manager](https://swift.org/package-manager/)
+
+    > The Swift Package Manager is a tool for managing the distribution of Swift
+    > code. It’s integrated with the Swift build system to automate the process
+    > of downloading, compiling, and linking dependencies.
+
+    The official one released when Swift was open-sourced.
 
 ## UI
 
@@ -118,6 +128,17 @@ My awesome list about the Swift programming language.
     An iOS port of the beautiful
     [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart). - Beautiful
     charts for iOS apps!
+
+# Awesome Sites
+
++ [NSHipster](http://nshipster.com)
+
+    NSHipster is a journal of the overlooked bits in Objective-C, Swift, and
+    Cocoa. Updated weekly.
+
++ [APPVENTURE](http://appventure.me/)
+
+    A personal blog about Swift, Objective-C, iOS, etc.
 
 # Articles
 
