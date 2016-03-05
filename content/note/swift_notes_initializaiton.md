@@ -124,7 +124,7 @@ put simply:
 1. Convenience initializer delegation across -- `self.init(...)`
 2. Designated initializer delegation upwards -- `super.init(...)`
 
-## <span style="color:red; font-size:1.5em">2</span>-Phase Initialization Ensured by <span style="color:red; font-size:1.5em">4</span> Safty Checks
+## <span style="color:red; font-size:1.5em">2</span>-Phase Initialization Ensured by <span style="color:red; font-size:1.5em">4</span> Safety Checks
 
 1. In designated initializer, initialize all local stored properties before
    delegate up
@@ -137,11 +137,11 @@ put simply:
     - read any instance properties (stored or computed)
     - reference `self` as an value
 
-# Initialization inheritance & overriding
+# Initializers inheritance
 
 Unlike subclasses in Objective-C, Swift subclasses do __NOT__ inherit their
 superclass initializers by default. Only when certain rules are satisfied can
-certain initializers be inherited to subclasses.
+certain initializers be inherited by subclasses.
 
 Do __NOT__ write the `override` modifier when providing a matching
 implementation of a superclass __convenience initializer__ (_because it can not
@@ -162,7 +162,7 @@ considered as a overriding_)
 Use `init?() {...}` or `init!() {...}` to define a failable initializer
 
 Use `return nil` to fail the initialization process though the Swift
-initializer dose not return any value
+initializers do not return any value.
 
 When defining failable initializer:
 
