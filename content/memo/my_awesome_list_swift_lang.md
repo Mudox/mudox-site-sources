@@ -3,7 +3,7 @@ date      = "2015-10-16T13:42:52+08:00"
 draft     = true
 title     = "MY AWESOME LIST - SWIFT"
 
-series      = ["Awesome List"]
+series    = ["Awesome List"]
 languages = ["Swift"]
 +++
 
@@ -129,6 +129,20 @@ My awesome list about the Swift programming language.
     [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart). - Beautiful
     charts for iOS apps!
 
++ [Advance](https://github.com/storehouse/Advance)
+
+    A powerful animation framework for iOS.
+
+## Testing
+
+- [Quick](https://github.com/Quick/Quick)
+
+    The Swift (and Objective-C) testing framework.
+
+- [Nimble](https://github.com/Quick/Nimble)
+
+    A Matcher Framework for Swift and Objective-C from [Quick](https://github.com/Quick/Quick)
+
 # Awesome Sites
 
 + [NSHipster](http://nshipster.com)
@@ -139,6 +153,11 @@ My awesome list about the Swift programming language.
 + [APPVENTURE](http://appventure.me/)
 
     A personal blog about Swift, Objective-C, iOS, etc.
+
++ [objc.io](www.objc.io)
+
+    A Site which publishes free monthly issues covering the most important
+    aspects of advanced iOS and OS X development.
 
 # Articles
 
