@@ -70,10 +70,6 @@ My awesome list about the Swift programming language.
 
     Soulful docs for Swift & Objective-C
 
-+ [Quick](https://github.com/Quick/Quick)
-
-    Quick is a behavior-driven development framework for Swift and Objective-C.
-
 ## Networking
 
 + [Alamofire](https://github.com/Alamofire/Alamofire)
@@ -139,9 +135,13 @@ My awesome list about the Swift programming language.
 
     The Swift (and Objective-C) testing framework.
 
+    Its
+    [documentation](https://github.com/Quick/Quick/tree/master/Documentation/en-us)
+    also teach new comers how to write effective tests.
+
 - [Nimble](https://github.com/Quick/Nimble)
 
-    A Matcher Framework for Swift and Objective-C from [Quick](https://github.com/Quick/Quick)
+    A matcher framework for swift and Objective-C from [Quick](https://github.com/Quick/Quick)
 
 # Awesome Sites
 
@@ -150,14 +150,18 @@ My awesome list about the Swift programming language.
     NSHipster is a journal of the overlooked bits in Objective-C, Swift, and
     Cocoa. Updated weekly.
 
-+ [APPVENTURE](http://appventure.me/)
+    It has a [Chinese translated mirror](http://nshipster.cn).
+
++ [Appventure](http://appventure.me/)
 
     A personal blog about Swift, Objective-C, iOS, etc.
 
-+ [objc.io](www.objc.io)
++ [objc.io](http://www.objc.io)
 
     A Site which publishes free monthly issues covering the most important
     aspects of advanced iOS and OS X development.
+
+    Treasures are in its [ISSUES](https://www.objc.io/issues/) section.
 
 # Articles
 
